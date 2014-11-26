@@ -5,7 +5,7 @@
 	//Consulta en ciudad
 	$consulta_ciudad = "select * from ciudad";
 
-
+	//Ejecutando consultas
 	$resultado = sqlsrv_query($conexion,$consulta) or 
 				die('No se pudo ejecutar la consulta');
 	$resultado_c = sqlsrv_query($conexion,$consulta_ciudad) or die("No se pudo ejecutar la consulta");
@@ -47,14 +47,16 @@
 	</div>
 	<h1>Reserva de pasajes</h1>
 	<form action="buscar_reserva.php">
-		<label for="ciudado">Ciudad de origen : </label>
-		<select name="" id="ciudado">
-			<?php echo $op;	?>
-		</select><br>
-		<label for="ciudadd">Ciudad de destino : </label>
-		<select name="" id="ciudadd">
-			<?php echo $op;	?>
-		</select><br>
+		<div class="opciones">
+			<label id="caption" for="ciudado">Ciudad de origen : </label>
+			<select name="ciudado" id="ciudado">
+				<?php echo $op;	?>
+			</select><br>
+			<label id="caption" for="ciudadd">Ciudad de destino : </label>
+			<select name="ciudadd" id="ciudadd">
+				<?php echo $op;	?>
+			</select><br>
+		</div>
 		<input id="buscar" type="submit" value="Buscar">
 	</form>
 

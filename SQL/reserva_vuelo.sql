@@ -1,3 +1,4 @@
+--VISTA QUE MUESTRA LAS RESERVAS REALIZADAS--
 CREATE VIEW reservas_vuelo
 AS
 SELECT p.cod_pasajero as 'Codigo',nombre_pasajero as 'Nombre de pasajero',apellido_paterno as 'Apellido Paterno',apellido_materno as 'Apellido Materno', 
