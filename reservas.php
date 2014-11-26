@@ -1,13 +1,14 @@
 <?php 
 	include("scripts/conexion.php");
+	//Consulta en vista reservas_vuelo
 	$consulta = "select * from reservas_vuelo";
+	//Consulta en ciudad
 	$consulta_ciudad = "select * from ciudad";
+
 
 	$resultado = sqlsrv_query($conexion,$consulta) or 
 				die('No se pudo ejecutar la consulta');
 	$resultado_c = sqlsrv_query($conexion,$consulta_ciudad) or die("No se pudo ejecutar la consulta");
-
-
 
 	$tabla = "";
 	$op = "";
@@ -33,35 +34,16 @@
 			}
 
  ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Reservas disponibles</title>
+	<link rel="stylesheet" href="css/main.css">
 </head>
-<style>
-	body
-	{
-		font-family: Segoe UI Light;
-		background: #1EC2F4;
-	}
-
-	.reserva{
-		margin: 40px;
-	}
-
-	.cabecera{
-		background: #FFFFFF;
-		width: 100%;
-		height: 200px;
-	}
-
-</style>
 <body>
 	<div class="cabecera">
-		
-		
+		<img src="img/logo.png" width="250" height="150" alt="">
 	</div>
 	<h1>Reserva de pasajes</h1>
 	<form action="buscar_reserva.php">
@@ -73,7 +55,7 @@
 		<select name="" id="ciudadd">
 			<?php echo $op;	?>
 		</select><br>
-		<input type="submit" value="Buscar">
+		<input id="buscar" type="submit" value="Buscar">
 	</form>
 
 	<div class="reserva">

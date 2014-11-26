@@ -1,0 +1,15 @@
+	body
+	{
+		font-family: Segoe UI Light;
+		background: #1EC2F4;
+	}
+
+	.reserva{
+		margin: 40px;
+	}
+
+	.cabecera{
+		background: #FFFFFF;
+		width: 100%;
+		height: 160px;
+	}
