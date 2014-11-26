@@ -1,8 +1,8 @@
 <?php
 $serverName = "KEVIN"; //serverName\instanceName
 $connectionInfo = array( "Database"=>"Agencia_Oficial", "UID"=>"sa", "PWD"=>"123456");
-$conn = sqlsrv_connect( $serverName, $connectionInfo);
-if( $conn ) {
+$conexion = sqlsrv_connect( $serverName, $connectionInfo);
+if($conexion) {
      echo "Conexión establecida.<br />";
 }else{
      echo "Conexión no se pudo establecer.<br />";
