@@ -44,35 +44,47 @@
 	body
 	{
 		font-family: Segoe UI Light;
+		background: #1EC2F4;
 	}
 
 	.reserva{
 		margin: 40px;
 	}
 
+	.cabecera{
+		background: #FFFFFF;
+		width: 100%;
+		height: 200px;
+	}
+
 </style>
 <body>
+	<div class="cabecera">
+		
+		
+	</div>
 	<h1>Reserva de pasajes</h1>
 	<form action="buscar_reserva.php">
-		<label for="">Ciudad de origen : </label>
-		<select name="" id="">
+		<label for="ciudado">Ciudad de origen : </label>
+		<select name="" id="ciudado">
 			<?php echo $op;	?>
-		</select>
-		<label for="">Ciudad de destino : </label>
-		<select name="" id="">
+		</select><br>
+		<label for="ciudadd">Ciudad de destino : </label>
+		<select name="" id="ciudadd">
 			<?php echo $op;	?>
-		</select>
+		</select><br>
+		<input type="submit" value="Buscar">
 	</form>
 
 	<div class="reserva">
-		<table border="1">
+		<table border="1" bgcolor="white">
 		<tr>
 			<th>Codigo</th>
 			<th>Nombre de pasajero</th>
 			<th>Apellido Materno</th>
 			<th>Sexo</th>
 			<th>Numero de telefono</th>
-			<th>Codigo de pasajer</th>
+			<th>Codigo de pasajero</th>
 			<th>Codigo de reserva</th>
 			<th>Numero de asiento</th>
 			<th>Numero de vuelo</th>
