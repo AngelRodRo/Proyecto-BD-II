@@ -26,6 +26,7 @@
 				$tabla.="<td>{$linea['Numero de vuelo']}</td>";
 				$tabla.="<td>{$linea['Ciudad de origen']}</td>";
 				$tabla.="<td>{$linea['Ciudad de destino']}</td>";
+				$tabla.="<td><a href='pasajero.php?codigo=$linea[Codigo]'>Mostrar</a></td>";
 				$tabla.="</tr>";
 			}
 
@@ -43,25 +44,39 @@
 </head>
 <body>
 	<div class="cabecera">
-		<img src="img/logo.png" width="250" height="150" alt="">
+
+		<img class="logo" src="img/logo.png" width="250" height="130" alt="">
 	</div>
-	<h1>Reserva de pasajes</h1>
-	<form action="buscar_reserva.php">
-		<div class="opciones">
-			<label id="caption" for="ciudado">Ciudad de origen : </label>
-			<select name="ciudado" id="ciudado">
-				<?php echo $op;	?>
-			</select><br>
-			<label id="caption" for="ciudadd">Ciudad de destino : </label>
-			<select name="ciudadd" id="ciudadd">
-				<?php echo $op;	?>
-			</select><br>
+	<div class="separacion"></div>
+	<div class="cuerpo">
+		<h1>Reserva de pasajes</h1>
+		<div class="formulario">
+			<form action="scripts/buscar_reserva.php"  >
+				<div class="opciones">
+					<div class="titulo">
+						<label id="caption" for="ciudado"><b>Ciudad de origen : </b></label><br>
+						<label id="caption" for="ciudadd"><b>Ciudad de destino : </b></label>	
+					</div>
+					<div class="dato">			
+						<select name="ciudado" id="ciudado">
+							<?php echo $op;	?>
+						</select><br>
+						
+						<select name="ciudadd" id="ciudadd">
+							<?php echo $op;	?>
+						</select><br>	
+					</div>
+					<input id="buscar" type="submit" value="Buscar">
+				</div>
+				
+			</form>
 		</div>
-		<input id="buscar" type="submit" value="Buscar">
-	</form>
+		<link rel="stylesheet" href="">
+		
 
 	<div class="reserva">
-		<table border="1" bgcolor="white">
+		<table  bgcolor="white">
+		<caption>Vuelos reservados</caption>
 		<tr>
 			<th>Codigo</th>
 			<th>Nombre de pasajero</th>
@@ -74,9 +89,15 @@
 			<th>Numero de vuelo</th>
 			<th>Ciudad de origen</th>
 			<th>Ciudad de destino</th>
+			<th>Mostrar</th>
 		</tr>
 		<?php echo $tabla; ?>
 	</div>
 	</table>
+	</div>
+	
 </body>
+<footer>
+	Derechos reservados - 2014
+</footer>
 </html>
