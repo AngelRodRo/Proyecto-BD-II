@@ -26,7 +26,6 @@
 	}*/
 
 	header("Location: ../reservas.php");
-*/
 
 
 
