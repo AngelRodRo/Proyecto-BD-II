@@ -1,79 +1,115 @@
-	body
-	{
-		font-family: Segoe UI Light;
-		margin: 0;
-	 
-	}
+body
+{
+	font-family: Segoe UI Light;
+	margin: 0;
+}
 
-	 caption{
-		color: black;
-	}
+ caption{
+	color: black;
+}
 
-	.logo{
-		margin: 20px;
-	}
+.logo{
+	margin: 20px;
+}
 
-	.reserva{
-		margin: 40px;
-	}
+.reserva{
+	margin: 40px;
+}
 
-	.cabecera{
-		background: #278AC4;
-		width: 100%;
-		height: 160px;
-	}
+.cabecera{
+	background: #278AC4;
+	width: 100%;
+	height: 160px;
+}
 
-	#buscar{
-		margin: 10px 0px;
-		border-radius:  5px;
-		font-size: 20px;
-	}
+#buscar{
+	margin: 10px 0px;
+	border-radius:  5px;
+	font-size: 20px;
+}
 
-	.opciones{
-		margin: 10px;
-	}
+.opciones{
+	margin: 10px;
+}
 
-	.cuerpo{
+.cuerpo{
 
-		padding: 15px;
-		border-radius: 15px;
-		margin: 10px;
-	}
+	padding: 15px;
+	border-radius: 15px;
+	margin: 10px;
+}
 
-	.separacion{
-		margin: 0px 0px 10px 0px;
-		height: 20px;
-		background: #000000;
-	}
+.separacion{
+	margin: 0px 0px 10px 0px;
+	height: 10px;
+	background: #000000;
+}
 
-	.titulo,.dato{
-		display: inline-block;
-	}
+.titulo,.dato{
+	display: inline-block;
+}
 
-	.formulario{
-				background: #1EC2F4;
-				width: 300px;
-				border-radius: 5px;
-				padding: 5px;
-	}
+.formulario{
+	background: #1EC2F4;
+	width: 300px;
+	border-radius: 5px;
+	padding: 5px;
+}
 
-	th{
-		background: #27C439;
-		color: white;
-		width: 150px;
-	}
+th{
+	background: #27C439;
+	color: white;
+	width: 150px;
+}
 
-	table,th,tr,td
-	{
-		border:1px solid black;
-		border-spacing: 0;
-		text-align: center;
-	}
+table,th,tr,td
+{
+	border:1px solid black;
+	border-spacing: 0;
+	text-align: center;
+}
 
-	footer
-	{
-		background: black;
-		height: 50px;
-		color: white;
-		text-align: center;
-	}
+footer
+{
+	background: black;
+ 	color: white;
+	text-align: center;
+	padding: 15px;
+}
+
+footer>span
+{
+	margin:  0px 75px;
+}
+
+a{
+	font-style: none;
+}
+
+.label_pas,.dato_pas {
+	display: inline-block;
+
+
+}
+
+label
+{
+	margin-bottom: 0px;
+}
+
+.dato_pas{
+	margin: 0px 0px 0px 15px;
+}
+
+.datos{
+	display: inline-block;
+}
+.dat_pers,.foto{
+	font-weight: bolder;
+	margin: 25px;
+	font-size: 20px;
+}
+
+.cabecera{
+	margin-top:40px;
+}
