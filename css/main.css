@@ -130,6 +130,7 @@ width: 300px;
 }
 
 .buscador{
+	color: white;
 	width: 500px;
 	margin: 25px;
 	background: blue;
@@ -137,3 +138,10 @@ width: 300px;
 	padding: 15px;
 }
 
+ .button{
+	color: black;
+}
+
+input{
+	color: black;
+}

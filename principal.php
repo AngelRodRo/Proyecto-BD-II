@@ -53,9 +53,7 @@
 			<input type="text" name="ciudadd"><br>
 			<input type="date" name="fecha">
 		</div>
-
-
-		<input type="submit" value="Buscar">
+		<input class="button" type="submit" value="Buscar">
 	 </form>
 	 </div>
 </body>
