@@ -1,5 +1,5 @@
 <?php 
-	include("scripts/conexion.php");
+	include("scripts/conexion2.php");
 	//Consulta en vista reservas_vuelo
 	$consulta = "select * from reservas_vuelo";
 	//Consulta en ciudad

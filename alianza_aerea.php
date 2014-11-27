@@ -13,7 +13,7 @@
 							<label for="cod_aliaza">Código de Alianza:</label>
 						</td>
 						<td>
-							<input type="text" name="identificacion" id="cod_alianza">
+							<input type="text" id="identificacion" name="cod_alianza">
 						</td>
 					</tr>
 					<td>
@@ -50,7 +50,7 @@
 				$tabla .="<tr>";
 				$tabla .="<td>".$linea['cod_alianza']."</td>";
 				$tabla .="<td>".$linea['nombre_alianza']."</td>";
-				$tabla .="<td><a href='scripts/eliminar_alianza.php?cod_alianza=".$linea['cod_alianza']."'>Eliminar</a></td>";
+				$tabla .="<td><a href='scripts/eliminar_alianza.php?cod_alianza = '".$linea['cod_alianza']."'>Eliminar</a></td>";
 				$tabla .="</tr>";
 		}
 ?>
