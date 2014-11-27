@@ -1,5 +1,5 @@
 <?php
-	include'scripts/conexion.php';
+	include("conexion2.php");
 	$identificacion = $_POST['identificacion'];
 	$tipo_identificacion = $_POST['tipo_identificacion'];
 	$nombre = $_POST['nombre'];
@@ -10,24 +10,13 @@
 	$sexo = $_POST['sexo'];
 	$pais = $_POST['pais'];
 // probando si los valores llegaban	
-//echo $identificacion.$tipo_identificacion.$nombre.$apellido_paterno.$apellido_materno.$fecha_nacimiento.$email.$sexo.$pais
-	$consulta = "exec insertar_pasajero
-	'".$identificacion."'".$tipo_identificacion."','".$nombre."','".$apellido_paterno."','".$apellido_materno."','".$fecha_nacimiento."
-	','".$email."','".$sexo."','".$pais."'";
-
+//echo $identificacion.$tipo_identificacion.$nombre.$apellido_paterno.$apellido_materno.$fecha_nacimiento.$email.$sexo.$pais;
+	
+	$consulta = " EXEC insertar_pasajero '{$identificacion}','{$tipo_identificacion}','{$nombre}','{$apellido_paterno}','{$fecha_nacimiento}','{$email}','{$sexo}','{$pais}'";
+	echo '<br>';
+	echo $consulta;
 
 	$resultado=sqlsrv_query($conexion,$consulta) or 
 				die('No se pudo ejecutar la consulta');
-
-	//datos de usuario de prueba
-/*	if (true) {	 
-		header("Location: ../reservas.php");
-		exit();
-	}*/
-
 	header("Location: ../reservas.php");
-
-
-
-
 ?>

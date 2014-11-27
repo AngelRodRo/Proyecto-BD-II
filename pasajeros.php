@@ -1,3 +1,13 @@
+<?php
+	echo '<meta charset="utf-8">';
+	include('scripts/conexion2.php');
+	$consulta="select * from pais";
+	$resultado = sqlsrv_query($conexion,$consulta);
+	$opciones = "";
+	while ($linea = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) {
+		$opciones .= "<option value='{$linea['nombre_pais']}'>{$linea['nombre_pais']}</option> ";
+	}
+?>		
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -21,9 +31,10 @@
 							<label for="tipo_identificacion">Tipo de Identificación:</label>
 						</td>
 						<td>
-							<select name="tipo_identificacion" >
-							  <option value="Documento Nacional de Identidad">Documento Nacional de Identidad</option>
-							  <option value="Carnet de Estrangeria">Carnet de Estrangeria</option>
+							<select id="tipo_identificacion" name="tipo_identificacion">
+							  <option value="D.N.I">Documento Nacional de Identidad</option>
+				<!--		  <option value="Carnet Estrangeria">Carnet de Estrangeria</option>
+							  <option value="Cédula de Extrangeria">Cédula de Extrangeria</option>-->
 							</select>
 						</td>
 					</tr>
@@ -84,7 +95,9 @@
 							<label for="pais">Pais: </label>
 						</td>
 						<td>
-							<input type="text" name="pais" id="pais">
+							<select id="pais" name="pais">
+								<?php echo $opciones ?>
+							</select>
 						</td>
 					</tr>
 					<tr>
