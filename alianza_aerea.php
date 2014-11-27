@@ -16,8 +16,9 @@
 							<input type="text" id="identificacion" name="cod_alianza">
 						</td>
 					</tr>
-					<td>
-						<label for="nombre">Nombre :</label>
+					<tr>
+						<td>
+							<label for="nombre">Nombre :</label>
 						</td>
 						<td>
 							<input type="text" name="nombre" id="nombre">
@@ -39,8 +40,7 @@
 					<th>Eliminar</th>
 				</tr>
 <?php 
-	include("scripts/conexion2.php");
-	//Consulta en vista reservas_vuelo
+	include("scripts/conexion.php");
 	$consulta = "select * from alianza_aerea";
 	//Ejecutando consultas
 	$resultado = sqlsrv_query($conexion,$consulta) or 
@@ -50,6 +50,7 @@
 				$tabla .="<tr>";
 				$tabla .="<td>".$linea['cod_alianza']."</td>";
 				$tabla .="<td>".$linea['nombre_alianza']."</td>";
+
 				$tabla .="<td><a href='scripts/eliminar_alianza.php?cod_alianza={$linea['cod_alianza']}'>Eliminar</a></td>";
 				$tabla .="</tr>";
 		}

@@ -5,7 +5,7 @@
 	<title></title>
 </head>
 <body>
-	<form action="
+	<form action="">
 		<label for="">Ciudad de origen:</label>
 		<input type="text">
 		<label for="">Ciudad de destino:</label>
@@ -14,6 +14,6 @@
 		<input type="text">
 
 
-	"></form>
+	 </form>
 </body>
 </html>

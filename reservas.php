@@ -1,5 +1,5 @@
 <?php 
-	include("scripts/conexion2.php");
+	include("scripts/conexion.php");
 	//Consulta en vista reservas_vuelo
 	$consulta = "select * from reservas_vuelo";
 	//Consulta en ciudad
@@ -69,8 +69,6 @@
               <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list"><b class="caret"></b></a>
               <ul class="dropdown-menu">
-               
-    
               </ul>
               </li>
             </ul>

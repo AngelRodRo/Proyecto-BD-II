@@ -1,4 +1,5 @@
 <?php
+
 $serverName = "KEVIN"; //serverName\instanceName
 $connectionInfo = array( "Database"=>"Agencia_Oficial", "UID"=>"sa", "PWD"=>"123456");
 $conexion = sqlsrv_connect( $serverName, $connectionInfo);
