@@ -69,8 +69,6 @@
               <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list"><b class="caret"></b></a>
               <ul class="dropdown-menu">
-               
-    
               </ul>
               </li>
             </ul>

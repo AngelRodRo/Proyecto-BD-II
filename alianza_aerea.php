@@ -13,7 +13,7 @@
 							<label for="cod_aliaza">Código de Alianza:</label>
 						</td>
 						<td>
-							<input type="text" name="identificacion" id="cod_alianza">
+							<input type="text"  name="cod_alianza">
 						</td>
 					</tr>
 					<td>
@@ -39,7 +39,7 @@
 					<th>Eliminar</th>
 				</tr>
 <?php 
-	include("scripts/conexion2.php");
+	include("scripts/conexion.php");
 	//Consulta en vista reservas_vuelo
 	$consulta = "select * from alianza_aerea";
 	//Ejecutando consultas
