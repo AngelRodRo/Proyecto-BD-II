@@ -101,6 +101,21 @@ label
 	margin: 0px 0px 0px 15px;
 }
 
+.datos_vuelo
+{ display: inline-block;
+	margin: 0px 0px 0px 15px;	
+}
+
+.datos >label
+{
+	margin-bottom: 20px;	
+}
+
+.datos_vuelo>input{
+margin-bottom: 10px;
+width: 300px;	
+}
+
 .datos{
 	display: inline-block;
 }
@@ -113,3 +128,12 @@ label
 .cabecera{
 	margin-top:40px;
 }
+
+.buscador{
+	width: 500px;
+	margin: 25px;
+	background: blue;
+	border-radius: 10px;
+	padding: 15px;
+}
+
