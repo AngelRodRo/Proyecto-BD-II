@@ -32,7 +32,7 @@
 					</tr>
 				</table>
 			</form>
-			<table >
+			<table style="color:blue">
 				<caption>Lista de Alianzas Aereas</caption>
 				<tr>
 					<th>Código de la Alianza Aerea</th>

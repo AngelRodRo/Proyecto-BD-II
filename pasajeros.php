@@ -12,11 +12,13 @@
 	<head>
 		<title>Registro de Pasajeros</title>
 		<meta charset="utf-8">
+		<link rel="stulesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/estilos.css">
 	</head>
 	<body>
 		<h1>REGISTRO DE NUEVOS PASAJEROS</h1>
-			<form action="scripts/registrar_pasajero.php" method="POST">
-				<table width=400px>
+			<form action="scripts/registrar_pasajero.php" method="POST" >
+				<table>
 					<tr>
 						<td>
 							<label for="identificacion">Nro. de Identificación:</label>
@@ -101,11 +103,14 @@
 					</tr>
 					<tr>
 						<td>
-							<input type="submit" value="Registrar">
-							<input type="reset">
+							<input class="btn"type="submit" value="Registrar">
+							<input class="btn" type="reset">
 						</td>
 					</tr>	
 				</table>
+				<div id="imagen_form">
+					<!--<img src="img/avion.png">-->
+				</div>
 			</form>
 	</body>
 </html>
