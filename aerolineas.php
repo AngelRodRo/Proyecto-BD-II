@@ -68,7 +68,7 @@
 				$tabla .="<tr>";
 				$tabla .="<td>".$linea['RUC']."</td>";
 				$tabla .="<td>".$linea['nombre']."</td>";
-				$tabla .="<td><a href='scripts/eliminar_aerolinea.php?RUC={$linea['RUC']}'>Eliminar</a></td>";
+				$tabla .="<td><a href='scripts/eliminar_aerolinea.php?ruc={$linea['RUC']}'>Eliminar</a></td>";
 				$tabla .="</tr>";
 		}
 ?>
