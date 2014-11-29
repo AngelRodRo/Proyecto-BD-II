@@ -189,3 +189,21 @@ h1{
 #destinos-1,#destinos-2{
 	margin: 5px;
 }
+
+.cuerpo{
+	margin: 10px;
+}
+
+.pais,td,tr
+{color: black;
+font-weight: bolder;}
+
+.pais>td{
+	font-style: none;
+	border: none;
+}
+
+caption{
+	font-size: 20px;
+	font-weight: bolder;
+}
