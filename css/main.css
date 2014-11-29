@@ -130,11 +130,11 @@ width: 300px;
 }
 
 .buscador{
+	display: inline-block;
 	color: white;
-	width: 500px;
+	width: 470px;
 	margin: 25px;
-	background: blue;
-	border-radius: 10px;
+	background: #2CC2FD;
 	padding: 15px;
 }
 
@@ -144,4 +144,48 @@ width: 300px;
 
 input{
 	color: black;
+}
+
+.destinos{
+	display: inline-block;
+	width: 580px;
+	margin: 0px 80px;
+	padding: 0;
+}
+
+.destinos>div>img{
+	display: inline-block;
+	width: 280px;
+	height: 200px;
+	border-radius: 5px;
+}
+
+ .cuerpo{
+ 	margin: 0 25px;
+ }
+
+ input[type=date] {
+	line-height: normal;
+}
+
+.destinos>div
+{
+	display: block;
+}
+
+h1{
+	background: none;
+}
+
+.buscar{
+	display: inline-block;
+	 
+	width: 470px;
+	margin: 25px;
+ 
+ 
+}
+
+#destinos-1,#destinos-2{
+	margin: 5px;
 }
