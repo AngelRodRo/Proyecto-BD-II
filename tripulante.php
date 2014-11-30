@@ -10,33 +10,29 @@
 <!DOCTYPE html>
 <html lang="es">
 	<head>
-		<title>Registro de Pasajeros</title>
+		<title>Registro de Tripulación</title>
 		<meta charset="utf-8">
 		<link rel="stulesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/estilos_pasajero.css">
 	</head>
 	<body>
-		<h1>REGISTRO DE NUEVOS PASAJEROS</h1>
-			<form action="scripts/registrar_pasajero.php" method="POST" >
+		<h1>REGISTRO DE LA TRIPULACIÓN</h1>
+			<form action="scripts/registrar_tripulante.php" method="POST" >
 				<table>
 					<tr>
 						<td>
-							<label for="identificacion">Nro. de Identificación:</label>
+							<label for="cod_tripulante">Código de tripulante:</label>
 						</td>
 						<td>
-							<input type="text" name="identificacion" id="identificacion">
+							<input type="text" name="cod_tripulante" id="cod_tripulante">
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="tipo_identificacion">Tipo de Identificación:</label>
+							<label for="dni_tripulante">DNI :</label>
 						</td>
 						<td>
-							<select id="tipo_identificacion" name="tipo_identificacion">
-							  <option value="D.N.I">Documento Nacional de Identidad</option>
-							  <option value="Carnet Estrangeria">Carnet de Estrangeria</option>
-							  <option value="Cédula de Extrangeria">Cédula de Extrangeria</option>
-							</select>
+							<input type="text" name="dni_tripulante" id="dni_tripulante">
 						</td>
 					</tr>
 					<tr>
@@ -49,36 +45,12 @@
 					</tr>
 					<tr>
 						<td>
-							<label for="apellido_paterno">Apellido Paterno: </label>
+							<label for="apellidos">Apellidos : </label>
 						</td>
 						<td>
-							<input type="text" name="apellido_paterno" id="apellido_paterno">
+							<input type="text" name="apellidos" id="apellidos">
 						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="apellido_materno">Apellido Materno: </label>
-						</td>
-						<td>
-							<input type="text" name="apellido_materno" id="apellido_materno">
-						</td>
-					</tr>					
-					<tr>
-						<td>
-							<label for="fecha_nacimiento">Fecha de Nacimiento: </label>
-						</td>
-						<td>
-							<input type="date" name="fecha_nacimiento" id="fecha_nacimiento">
-						</td>
-					</tr>					
-					<tr>
-						<td>
-							<label for="email">Email: </label>
-						</td>
-						<td>
-							<input type="text" name="email" id="email">
-						</td>
-					</tr>					
+					</tr>			
 					<tr>
 						<td>
 							<label>Seleccione el sexo:</label>
@@ -93,14 +65,33 @@
 					</tr>
 					<tr>
 						<td>
-							<label for="pais">Pais: </label>
+							<label for="fecha_nacimiento">Fecha de Nacimiento: </label>
 						</td>
 						<td>
-							<select id="pais" name="pais">
-								<?php echo $opciones ?>
-							</select>
+							<input type="date" name="fecha_nacimiento" id="fecha_nacimiento">
+						</td>
+					</tr>					
+					<tr>
+						<td>
+							<label for="fecha_inicio">Fecha de Inicio: </label>
+						</td>
+						<td>
+							<input type="date" name="fecha_inicio" id="fecha_inicio">
 						</td>
 					</tr>
+					<tr>
+						<td>
+							<label for="rol">Tipo de Identificación:</label>
+						</td>
+						<td>
+							<select id="rol" name="rol">
+							  <option value="Piloto">Piloto</option>
+							  <option value="Aeromoso">Aeromoso</option>
+							  <option value="Cocinero">Cocinero</option>
+							  <option value="Limpieza">Limpieza</option>
+							</select>
+						</td>
+					</tr>		
 					<tr>
 						<td>
 							<input class="btn"type="submit" value="Registrar">

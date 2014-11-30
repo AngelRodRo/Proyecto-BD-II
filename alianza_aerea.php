@@ -3,6 +3,7 @@
 	<head>
 		<title>Alianzas Aereas</title>
 		<meta charset="utf-8">
+		<link rel="stylesheet" href="css/estilos_alianza.css">
 	</head>
 	<body>
 		<h1>Registros de Alianzas Aéreas</h1>
@@ -32,12 +33,12 @@
 					</tr>
 				</table>
 			</form>
-			<table style="color:blue">
+			<table style="border: 1px solid blue" id="lista_alianzas">
 				<caption>Lista de Alianzas Aereas</caption>
 				<tr>
-					<th>Código de la Alianza Aerea</th>
-					<th>Nombre de la Alianza Aerea</th>
-					<th>Eliminar</th>
+					<th style="border: 1px solid blue" >Código de la Alianza Aerea</th>
+					<th style="border: 1px solid blue">Nombre de la Alianza Aerea</th>
+					<th style="border: 1px solid blue">Eliminar</th>
 				</tr>
 <?php 
 	include("scripts/conexion.php");

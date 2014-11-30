@@ -5,5 +5,5 @@
 
 	$consulta = "exec insertar_alianza '".$cod_alianza."','".$nombre."'";
 	sqlsrv_query($conexion,$consulta) or die("No se pudo ejecutar consulta");
-	header('Location:../pais.php');
+	header('Location:../alianza_aerea.php');
 ?>
