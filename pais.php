@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
-	 
+	<head>
+		<title>Pais</title>
+		<meta charset="utf-8"> 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/starter-template.css" rel="stylesheet">
 <link rel="stylesheet" href="css/main.css">
