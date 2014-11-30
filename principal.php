@@ -4,9 +4,9 @@
 	<meta charset="UTF-8">
 	<title>Reservas disponibles</title>
  
-	   <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/starter-template.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/starter-template.css" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
