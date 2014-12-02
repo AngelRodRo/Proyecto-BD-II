@@ -1,6 +1,6 @@
 	
 <?php
-	require('fpdf.php');
+	require('scripts/fpdf.php');
 
 
 	class PDF extends FPDF
