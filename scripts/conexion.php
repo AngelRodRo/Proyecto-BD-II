@@ -1,8 +1,12 @@
 <?php
 ini_set('mssql.charset', 'UTF-8');
 $serverName = "KEVIN"; //serverName\instanceName
-$connectionInfo = array( "Database"=>"Agencia_Oficial", "UID"=>"sa", "PWD"=>"123456");
-$connectionInfo["CHARACTERSET"] = "UTF-8";
+$connectionInfo = array( "Database"=>"Agencia_Oficial", 
+	"UID"=>"sa", 
+	"PWD"=>"123456",
+	"CHARACTERSET"=>"UTF-8"	);
+
+$connectionInfo['RETURNDATESASSTRINGS']=TRUE;
 
 $conexion = sqlsrv_connect( $serverName, $connectionInfo);
 if($conexion) {

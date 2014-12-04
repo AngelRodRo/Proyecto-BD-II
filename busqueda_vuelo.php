@@ -3,12 +3,16 @@
 	include("scripts/conexion.php");
 	$ciudado = $_POST['ciudado'];
 	$ciudadd = $_POST['ciudadd'];
+	$fecha = $_POST['fecha'];
 
-	$consulta = "EXEC buscar_vuelos '$ciudado','$ciudadd'";
+	$datos=date_parse($fecha);
+ 
+	$date = $datos['day']."-".$datos['month']."-".$datos['year'];
+
+	$consulta = "EXEC buscar_vuelos '$ciudado','$ciudadd','$date'";
 
 	$resultado = sqlsrv_query($conexion,$consulta) or 
 	die("No se puede ejecutar");
-
 
 	$tabla="";
 
@@ -25,9 +29,7 @@
 		$tabla.="<td>".$linea['Nombre de aerolinea']."</td>";
 		$tabla.="</tr>";		
 	}
-
- 
- ?>
+?>
 
  <!DOCTYPE html>
 <html lang="en">
