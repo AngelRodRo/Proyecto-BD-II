@@ -30,8 +30,8 @@
         
         var availableTags = [
           <?php 
-            while ($linea = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) 
-                  echo "'".$linea['Nombre de Ciudad']."',";
+            while ($linea1 = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) 
+                  echo "'".$linea1['Nombre de Ciudad']."',";
           ?>
         ];
         $( "#tags1" ).autocomplete({
@@ -41,6 +41,23 @@
 
 
   </script>
+  <script>
+      $(function() {
+        
+        var availableTags = [
+          <?php 
+            while ($linea2 = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) 
+                  echo "'".$linea2['Nombre de Ciudad']."',";
+          ?>
+        ];
+        $( "#tags2" ).autocomplete({
+          source: availableTags
+        });
+      });
+
+
+  </script>
+ 
  
 </head>
 <body>
@@ -62,6 +79,7 @@
  
             <li><a href="ayuda.php">Ayuda</a></li>
           </ul>
+          
            <ul class="nav navbar-nav navbar-right">
               <li><a href="">Iniciar sesion</a></li>
               <li><a href="">Crear nuevo usuario</a></li>
@@ -71,6 +89,7 @@
               </ul>
               </li>
             </ul>
+            
         </div><!--/.nav-collapse -->
       </div>
     </div>
@@ -91,7 +110,7 @@
       </div>
       <div class="datos_vuelo">
         <input id="tags1" type="text" name="ciudado">  <br>
-        <input id="tags1" type="text" name="ciudadd"><br>
+        <input id="tags2" type="text" name="ciudadd"><br>
         <input type="date" name="fecha">
       </div>
       <input class="btn btn-lg btn-primary " type="submit" value="Buscar">
