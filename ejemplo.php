@@ -16,12 +16,11 @@
 		    $this->Cell(80);
 		    // Título
 		    $this->Cell(30,10,'Registro de pasajeros',0,1,'C');
+
+
 		    // Salto de línea
 		    $this->Ln(20);
 		}
-
-	 
-	 
 
 		// Tabla simple
 		function BasicTable($header, $data)
@@ -41,10 +40,10 @@
 
 
 		// Una tabla más completa
-		function ImprovedTable($header, $data)
+		function ImprovedTable($header, $w, $data)
 		{
 		    // Anchuras de las columnas
-		    $w = array(25, 25, 30, 30,30,20,20);
+		    
 		    // Cabeceras
 		    for($i=0;$i<count($header);$i++)
 		        $this->Cell($w[$i],7,$header[$i],1,0,'C');
@@ -70,16 +69,16 @@
 		}
 
 		// Tabla coloreada
-		function FancyTable($header, $data)
+		function FancyTable($header,$w, $data)
 		{
 		    // Colores, ancho de línea y fuente en negrita
 		    $this->SetFillColor(25,67,0);
 		    $this->SetTextColor(255);
 		    $this->SetDrawColor(75,0,0);
 		    $this->SetLineWidth(.1);
-		    $this->SetFont('','B','10');
+		     
 		    // Cabecera
-		    $w = array(25, 25, 30, 30,20,40,20);
+		     
 		    for($i=0;$i<count($header);$i++)
 		        $this->Cell($w[$i],7,$header[$i],1,0,'C',true);
 		    $this->Ln();
@@ -93,15 +92,11 @@
 
 		    while($linea=sqlsrv_fetch_array($data,SQLSRV_FETCH_NUMERIC))
 		    {
-		    	 
-			        $this->Cell($w[0],6,$linea[0],'LR',0,'C',$fill);
-			        $this->Cell($w[1],6,$linea[1],'LR',0,'C',$fill);
-			        $this->Cell($w[2],6,$linea[2],'LR',0,'C',$fill);
-			        $this->Cell($w[3],6,$linea[3],'LR',0,'C',$fill);
-			        $this->Cell($w[4],6,$linea[4],'LR',0,'C',$fill);
-			        $this->Cell($w[5],6,$linea[5],'LR',0,'C',$fill);
-			        $this->Cell($w[6],6,$linea[6],'LR',0,'C',$fill);
-			        $this->Ln();
+		    	 for ($i=0; $i < count($header) ; $i++) { 
+			        $this->Cell($w[$i],6,$linea[$i],'LR',0,'C',$fill);
+			        		    	 
+			    }
+			    $this->Ln();
 		    }
 			    
 		    // Línea de cierre
@@ -130,10 +125,14 @@
 	$pdf = new PDF();
 	// Títulos de las columnas
 	$header = array('Codigo', 'Nombre', 'Apellido P.', 'Apellido M.','Edad','Email','Sexo	');
-	 
+	$w = array(25, 25, 30, 30,10,50,20);
 	$pdf->AliasNbPages();
+<<<<<<< HEAD
 	$pdf->SetFont('Arial','',12);
+=======
+	$pdf->SetFont('Arial','',9);
+>>>>>>> origin/master
 	$pdf->AddPage();
-	$pdf->FancyTable($header,$resultado);
+	$pdf->FancyTable($header, $w, $resultado);
 	$pdf->Output();
 ?>
