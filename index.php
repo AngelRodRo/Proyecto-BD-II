@@ -68,15 +68,20 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index1.php">Nuevo usuario</a></li>
-            <li><a href="ayuda.php"></a></li>
-           
+            <li><a href="#">Nuevo usuario</a></li>
+ 
+            
           </ul>
           <ul class="nav navbar-nav navbar-right">
               <li class="login"> <span>Usuario : </span><input type="text"> </li>
               <li class="login"> <span>Contraseña : </span><input type="password"> </li>
-              <li class="login"><span><input class="btn btn-primary " type="submit" value="Ingresar"></span></li>
+              <li class="login"><input class="btn btn-primary " type="submit" value="Iniciar sesion"></li>
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list"><b class="caret"></b></a>
+              <ul class="dropdown-menu">
+              </ul>
             </ul>
+
         </div><!--/.nav-collapse -->
       </div>
     </div>
