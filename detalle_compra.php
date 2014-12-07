@@ -64,7 +64,6 @@ where nro_vuelo = '{$_SESSION['nro_vuelo']}' and dc.cod_compra is  NULL";
 	<div class="separacion"></div>
 	<div class="cuerpo">
 		<h1>Nuevas Compras</h1>
-				
 				<form action='scripts/registrar_pasajero.php' method='GET' >
 					<table>
 					<script type="text/javascript">
@@ -78,7 +77,7 @@ where nro_vuelo = '{$_SESSION['nro_vuelo']}' and dc.cod_compra is  NULL";
 					</script>
 					<tr>
 						<td>
-							<input href='#' type="button" value="Regresar">
+							<a href=javascript:history.back(1)>Regresar</a>
 							<input type="submit" value="Finalizar">
 							<input type="reset">
 						</td>
