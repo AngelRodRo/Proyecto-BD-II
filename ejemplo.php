@@ -132,7 +132,7 @@
 	$header = array('Codigo', 'Nombre', 'Apellido P.', 'Apellido M.','Edad','Email','Sexo	');
 	 
 	$pdf->AliasNbPages();
-	$pdf->SetFont('Arial','',14);
+	$pdf->SetFont('Arial','',12);
 	$pdf->AddPage();
 	$pdf->FancyTable($header,$resultado);
 	$pdf->Output();

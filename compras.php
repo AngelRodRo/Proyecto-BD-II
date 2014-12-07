@@ -1,3 +1,22 @@
+
+<?php
+	include('scripts/conexion.php');
+	//$nro_vuelo = $_REQUEST['nro_vuelo'];
+	session_start();
+	$_SESSION['nro_vuelo'] = '001';
+	$consulta = "select v.cod_vuelo, dv.nro_vuelo, dv.horario_partida, dv.horario_llegada, c.nombre_ciudad as ciudad_origen, c2.nombre_ciudad as ciudad_destino  from vuelo v inner join detalles_vuelo dv on v.cod_vuelo = dv.cod_vuelo 
+inner join ciudad c on c.cod_ciudad = v.cod_ciudad_origen inner join ciudad c2 on c2.cod_ciudad = v.cod_ciudad_destino where DV.nro_vuelo = '{$_SESSION['nro_vuelo']}'";
+	$resultado = sqlsrv_query($conexion,$consulta);
+	while ($linea = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) {
+		$cod_vuelo = $linea['cod_vuelo'];
+		$nro_vuelo = $linea['nro_vuelo'];
+		$horario_partida = $linea['horario_partida'];
+		$horario_llegada = $linea['horario_llegada'];
+		$ciudad_origen = $linea['ciudad_origen'];
+		$ciudad_destino = $linea['ciudad_destino'];
+	}
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 		<head>
@@ -46,50 +65,55 @@
 		<h1>Nuevas Compras</h1>
 			<form action="detalle_compra.php" method="GET">
 				<table width=800px>
-				<!--	<tr>
+					<tr>
 						<td>
-							<label for="pais_origen">Seleccione su Pais de origen :</label>
-						</td>
+							<strong>Código del Vuelo</strong> 	
+						</td>	
 						<td>
-							<select name="pais_origen" >
-							  <option value="tacna">Documento Nacional de Identidad</option>
-							  <option value="arica">Carnet de Estrangeria</option>
-							</select>
+							<?php echo $cod_vuelo ?>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="ciudad_origen">Seleccione su Ciudad de origen :</label>
+							<strong>Número del vuelo</strong> 
+
 						</td>
 						<td>
-							<select name="ciudad_origen" >
-							  <option value="tacna">Documento Nacional de Identidad</option>
-							  <option value="arica">Carnet de Estrangeria</option>
-							</select>
+							<?php echo $nro_vuelo ?>	
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="pais_destino">Seleccione el Pais de destino :</label>
+							<strong>Horario de Partida</strong>
 						</td>
 						<td>
-							<select name="pais_destino" >
-							  <option value="Documento Nacional de Identidad">Documento Nacional de Identidad</option>
-							  <option value="Carnet de Estrangeria">Carnet de Estrangeria</option>
-							</select>
+							 <?php echo $horario_partida?>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="ciudad_destino">Seleccione la Ciudad de destino :</label>
+							<strong>Horario de Llegada</strong> 
 						</td>
 						<td>
-							<select name="ciudad_destino" >
-							  <option value="Documento Nacional de Identidad">Documento Nacional de Identidad</option>
-							  <option value="Carnet de Estrangeria">Carnet de Estrangeria</option>
-							</select>
+							<?php echo $horario_llegada?>
 						</td>
-					</tr>-->
+					</tr>
+					<tr>
+						<td>
+							<strong>Ciudad de Origen</strong>
+						</td>
+						<td>
+							 <?php echo $ciudad_origen?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Ciudad de Destino</strong> 
+						</td>
+						<td>
+							<?php echo $ciudad_destino ?>
+						</td>
+					</tr>
 					<tr>
 						<td>
 							<label for="nro_pasajes">Número de Pasajeros : </label>
