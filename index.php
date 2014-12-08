@@ -40,6 +40,7 @@
        {    
             margin:10px;
             color:  white;
+            display: inline-block;
        }
 
         body
@@ -73,13 +74,12 @@
             
           </ul>
           <ul class="nav navbar-nav navbar-right">
-              <li class="login"> <span>Usuario : </span><input type="text"> </li>
-              <li class="login"> <span>Contraseña : </span><input type="password"> </li>
+          <form action="scripts/login.php" method="POST" >
+              <li class="login"> <span>Usuario : </span><input name="usuario" type="text"> </li>
+              <li class="login"> <span>Contraseña : </span><input name="password" type="password"> </li>
               <li class="login"><input class="btn btn-primary " type="submit" value="Iniciar sesion"></li>
-              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list"><b class="caret"></b></a>
-              <ul class="dropdown-menu">
-              </ul>
+          </form>
+               
             </ul>
 
         </div><!--/.nav-collapse -->
