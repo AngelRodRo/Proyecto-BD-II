@@ -197,3 +197,11 @@ caption{
 	font-size: 20px;
 	font-weight: bolder;
 }
+
+footer{
+	width: auto;
+	background: #000000;
+	padding: 20px;
+	text-align: center;
+	color: white;
+}
