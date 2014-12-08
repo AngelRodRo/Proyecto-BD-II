@@ -124,7 +124,8 @@ on dc.cod_pasaje = p.cod_pasaje inner join pasajero pa on pa.cod_pasajero = dc.c
 	$pdf = new PDF();
 	// Títulos de las columnas
 	$header = array('Codigo de compra', 'Pasaje', 'Pasajero','Apellido', 'Nro. de Asiento','Precio','Nro. Vuelo');
-	$w = array(25, 25, 30, 30,10,50,20);
+	//El tamañao de las cabeceras
+	$w = array(30, 25, 30, 30,30,20,20);
 	$pdf->AliasNbPages();
 	$pdf->SetFont('Arial','',9);
 	$pdf->AddPage();

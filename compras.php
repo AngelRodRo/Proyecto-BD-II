@@ -32,6 +32,11 @@ $resultado = sqlsrv_query($conexion,$consulta);
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/starter-template.css" rel="stylesheet">
 <link rel="stylesheet" href="css/main.css">
+<style>
+	td,th,tr,table{
+		border: none;
+	}
+</style>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">

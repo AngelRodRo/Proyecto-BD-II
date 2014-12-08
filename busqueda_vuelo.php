@@ -17,11 +17,20 @@
 	die("No se puede ejecutar");
 
 	$items="";
-
+ 
  
 
 	while ($linea = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) {
+		$fecha = $linea['Horario de partida'];
+		$fecha_f=date_parse($fecha);
+		$fecha_cf = $fecha_f['day']."-".$fecha_f['month']."-".$fecha_f['year'];
+
+
 		$items.="<div class='search_item'>";
+				$items.="<div class='data'>
+ 				<p><span><strong>Aerolinea : </strong></span><span>".$linea['Nombre de aerolinea']."</span>
+ 				<span><strong>Fecha : </strong></span><span>".$fecha_cf."</span></p>
+ 			</div>";
 		$items.="<div class='data'>";
 		$items.="<div><p><span id='cod'><strong>Codigo  :</strong></span><span>".$linea['Codigo de vuelo']."</span>";
 		$items.="<span><strong>Origen  :</strong></span><span>".$linea['Ciudad de origen']."-".$linea['Pais origen']."</span>";
