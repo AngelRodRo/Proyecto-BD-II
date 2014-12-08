@@ -15,7 +15,7 @@
 		session_start();
 		$_SESSION['usuario']=$nombre;
 		$_SESSION['registrado']= true;
-		header("Location: ../reservas.php");
+		header("Location: ../principal.php");
 		exit();
 	}
 

@@ -9,6 +9,7 @@
  
 	$date = $datos['day']."-".$datos['month']."-".$datos['year'];
 
+
 	$consulta = "EXEC buscar_vuelos '$ciudado','$ciudadd','$date'";
 
 	$resultado = sqlsrv_query($conexion,$consulta) or 
@@ -39,6 +40,11 @@
 	   <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/starter-template.css" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
+    <style>
+		table{
+			margin: 30px;
+		}
+    </style>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -50,11 +56,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Agencia de viajes</a>
+			<a class="navbar-brand" href="#"><img src="img/logo.png" width="50" height="30" alt=""></a>
+          	<a class="navbar-brand" href="#">Agencia de viajes</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index1.php">Inicio</a></li>
+            <li><a href="index.php">Inicio</a></li>
  
             <li><a href="ayuda.php">Ayuda</a></li>
           </ul>
