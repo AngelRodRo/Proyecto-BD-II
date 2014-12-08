@@ -15,25 +15,33 @@
 	$resultado = sqlsrv_query($conexion,$consulta) or 
 	die("No se puede ejecutar");
 
-	$tabla="";
+	$items="";
+
+ 
 
 	while ($linea = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) {
-		$tabla.="<tr>";
-		$tabla.="<td>{$linea['Codigo de vuelo']}</td>";
-		$tabla.="<td>{$linea['Aeropuerto de origen']}</td>";
-		$tabla.="<td>".$linea['Aeropuerto de destino']."</td>";
-		$tabla.="<td>".$linea['Ciudad de origen']."</td>";
-		$tabla.="<td>".$linea['Pais origen']."</td>";
-		$tabla.="<td>".$linea['Ciudad de destino']."</td>";
-		$tabla.="<td>".$linea['Pais de Destino']."</ts>";
-		$tabla.="<td>".$linea['Monto']."</td>";
-		$tabla.="<td>".$linea['Nombre de aerolinea']."</td>";
-		$tabla.="</tr>";		
+		$items.="<div class='search_item'>";
+		$items.="<div class='data'>";
+		$items.="<div><p><span id='cod'><strong>Codigo  :</strong></span><span>".$linea['Codigo de vuelo']."</span>";
+		$items.="<span><strong>Origen  :</strong></span><span>".$linea['Ciudad de origen']."-".$linea['Pais origen']."</span>";
+		$items.="<span><strong>Destino : </strong></span><span>".$linea['Ciudad de destino']."-".$linea['Pais de Destino']."</span></p></div>";
+		$items.="</div>";
+		$items.="<div>";
+		$items.="<div id='item1'>";
+		$items.=" <p><span id='cod'><strong>Aeropuerto de origen &nbsp;:</strong></span> <span>".$linea['Aeropuerto de origen']."</span></p>";
+		$items.="<p><span id='cod'><strong>Aeropuerto de destino:</strong></span> <span>".$linea['Aeropuerto de destino']."</span></p>";
+		$items.="</div>";
+		$items.="<div id='item2'>";
+		$items.="<p><span><a href='#''>Mas detalles</a></span><span class='price'>S/.".$linea['Monto']."</span></p>";
+		$items.="				</div>
+			</div>
+		</div>";
+ 
 	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head></strong>
 	<meta charset="UTF-8">
 	<title>Reservas disponibles</title>
  
@@ -41,9 +49,52 @@
     <link href="css/starter-template.css" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <style>
-		table{
-			margin: 30px;
-		}
+	 
+					.search_item{
+				border:1px solid black;
+				border-radius: 10px;
+				padding: 10px;
+				font-family: arial;
+				margin:  5px 20px;
+			}
+
+			.data{
+				margin: 0 15px;
+			}
+
+			.data>span{
+				 
+			}
+
+
+			p{
+				margin: 10px 5px;
+			}
+
+			#item1,#item2{
+				display: inline-block;
+				margin: 0px 15px;
+			}
+ 
+
+			.price{
+				font-size: 45px;
+				margin: 0 5px;
+			}
+
+			span{
+				margin: 0 25px;
+			}
+
+			.buscador{
+				display: inline-block;
+			}
+
+			.resultados{
+				display: inline-block;
+			}
+
+
     </style>
 </head>
 <body>
@@ -80,20 +131,12 @@
 		<img class="logo" src="img/logo.png" width="250" height="130" alt="">
 	</div>
 	<div class="separacion"></div>
-	<table>
-		<caption>Vuelos encontrados</caption>
-		<tr>
-			<th>Codigo de vuelo</th>
-			<th>Aeropuerto de origen</th>
-			<th>Aeropuerto de destino</th>
-			<th>Ciudad de origen</th>
-			<th>Pais de origen</th>
-			<th>Ciudad de destino</th>
-			<th>Pais de destino</th>
-			<th>Monto</th>
-			<th>Nombre de aerolinea</th>
-		</tr>
-		<?php echo $tabla; ?>
-	</table>	
+	<div class="buscador">
+		
+	</div>
+	<div class="resultados">
+		<?php echo $items; ?>
+	</div>
+		
 </body>
 </html>

@@ -10,40 +10,6 @@
 				padding: 0;
 			}
 
-			.search_item{
-				border:1px solid black;
-				padding: 10px;
-				font-family: arial;
-			}
-
-			.data{
-				margin: 0 15px;
-			}
-
-			.data>span{
-				 
-			}
-
-
-			p{
-				margin: 10px 25px;
-			}
-
-			#item1,#item2{
-				display: inline-block;
-				margin: 0px 15px;
-			}
- 
-
-			.price{
-				font-size: 45px;
-				margin: 0 65px;
-			}
-
-			span{
-				margin: 0 25px;
-			}
-
 
 
 
