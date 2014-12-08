@@ -116,15 +116,14 @@
 	}
 
 	include("scripts/conexion.php");
-
-	$query = "SELECT * FROM registro_pasajero";
-
+	session_start();
+	//ECHO $_SESSION['cod_compra'];
+	$query = "select dc.cod_compra, dc.cod_pasaje, dc.cod_pasajero, pa.apellido_paterno, p.nro_asiento, p.precio_pasaje, p.nro_vuelo from detalle_compra dc inner join pasaje p 
+on dc.cod_pasaje = p.cod_pasaje inner join pasajero pa on pa.cod_pasajero = dc.cod_pasajero where dc.cod_compra='{$_SESSION['cod_compra']}'";
 	$resultado = sqlsrv_query($conexion,$query);
-
-
 	$pdf = new PDF();
 	// Títulos de las columnas
-	$header = array('Codigo', 'Nombre', 'Apellido P.', 'Apellido M.','Edad','Email','Sexo	');
+	$header = array('Codigo de compra', 'Pasaje', 'Pasajero','Apellido', 'Nro. de Asiento','Precio','Nro. Vuelo');
 	$w = array(25, 25, 30, 30,10,50,20);
 	$pdf->AliasNbPages();
 	$pdf->SetFont('Arial','',9);

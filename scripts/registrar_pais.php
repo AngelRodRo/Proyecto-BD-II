@@ -5,6 +5,15 @@
 	$descripcion_pais = $_POST['descripcion_pais'];
 
 	$consulta = "insert into pais values('{$nombre_pais}','{$cod_pais}','{$descripcion_pais}')";
-	sqlsrv_query($conexion,$consulta) or die("No se pudo ejecutar consulta");
-	header('Location:../pais.php');
+	$respuesta = sqlsrv_query($conexion,$consulta);
+
+	if( $stmt === false) 
+	{
+    	header('Location:../pais.php');
+	}
+	else
+	{
+		echo 'Ha ocurrido un error: ';
+		die( print_r( sqlsrv_errors(), true) );
+	}
 ?>
