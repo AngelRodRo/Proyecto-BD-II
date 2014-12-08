@@ -6,8 +6,7 @@
 
 	$consulta = "insert into pais values('{$nombre_pais}','{$cod_pais}','{$descripcion_pais}')";
 	$respuesta = sqlsrv_query($conexion,$consulta);
-
-	if( $stmt === false) 
+	if( $respuesta) 
 	{
     	header('Location:../pais.php');
 	}

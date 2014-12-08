@@ -14,6 +14,13 @@ inner join ciudad c on c.cod_ciudad = v.cod_ciudad_origen inner join ciudad c2 o
 		$horario_llegada = $linea['horario_llegada'];
 		$ciudad_origen = $linea['ciudad_origen'];
 		$ciudad_destino = $linea['ciudad_destino'];
+
+	}
+	$consulta = "select count(nro_asiento) as nro_pasajes from detalle_compra dc right join pasaje p on p.cod_pasaje = dc.cod_pasaje 
+where nro_vuelo = '{$_SESSION['nro_vuelo']}' and dc.cod_compra is  NULL";
+$resultado = sqlsrv_query($conexion,$consulta);
+	while ( $linea = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) {
+		echo "<script type='text/javascript'> var tope = {$linea['nro_pasajes']}; </script>";
 	}
 
 ?>
@@ -111,7 +118,7 @@ inner join ciudad c on c.cod_ciudad = v.cod_ciudad_origen inner join ciudad c2 o
 							<strong>Ciudad de Destino</strong> 
 						</td>
 						<td>
-							<?php echo $ciudad_destino ?>
+							<?php echo $ciudad_destino; ?>
 						</td>
 					</tr>
 					<tr>
@@ -120,9 +127,9 @@ inner join ciudad c on c.cod_ciudad = v.cod_ciudad_origen inner join ciudad c2 o
 						</td>
 						<td>
 							<script type="text/javascript">
-								var x= 0;
+								var x = 0;
 								document.write("<select id='nro_pasajes' name='nro_pasajes'>");
-								for (var x = 1 ; x <= 20; x++) {
+								for (x = 1 ; x <= tope; x++) {
 									document.write("<option>"+x+"</option>");
 								};
 								document.write("</select>");
