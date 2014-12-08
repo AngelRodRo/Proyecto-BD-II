@@ -1,16 +1,6 @@
-<?php
-	include('scripts/conexion.php');
-	$consulta="select * from alianza_aerea";
-	$resultado = sqlsrv_query($conexion,$consulta);
-	$opciones = "";
-	while ($linea = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) {
-		$opciones .= "<option value='{$linea['cod_alianza']}'>{$linea['nombre_alianza']}</option> ";
-	}
-?>		
-<!DOCTYPE html>
-<html lang="es">
+tml lang="es">
 		<head>
-		<title>Compra</title>
+		<title>Promociones</title>
 		<meta charset="utf-8"> 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/starter-template.css" rel="stylesheet">
@@ -52,66 +42,77 @@
   </div>
 	<div class="separacion"></div>
 	<div class="cuerpo">
-		<h1>REGISTRO DE AEROLINEAS</h1>
-			<form action="scripts/registrar_aerolinea.php" method="POST">
+		<h1>Promociones</h1>
+			<form action="scripts/registrar_promocion.php" method="POST">
 				<table width=400px>
 					<tr>
 						<td>
-							<label for="ruc">RUC :</label>
+							<label for="cod_promocion">Código de Promocion:</label>
 						</td>
 						<td>
-							<input type="text" name="ruc" id="ruc">
+							<input type="text" id="cod_promocion" name="cod_promocion">
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="nombre">Nombre de la aerolinea :</label>
+							<label for="nombre">Nombre :</label>
 						</td>
 						<td>
 							<input type="text" name="nombre" id="nombre">
 						</td>
-					</tr>
+					</tr>	
 					<tr>
 						<td>
-							<label for="cod_alianza">Alianza Aerea : </label>
+							<label for="porcentaje_descuento">Porcentaje de Descuento :</label>
 						</td>
 						<td>
-							<select id="cod_alianza" name="cod_alianza">
-								<?php echo $opciones ?>
-							</select>
+							<input type="text" name="porcentaje_descuento" id="porcentaje_descuento">
 						</td>
-					</tr>
+					</tr>	
+					<tr>
+						<td>
+							<label for="descripcion">Descripción :</label>
+						</td>
+						<td>
+							<input type="text" name="descripcion" id="descripcion">
+						</td>
+					</tr>		
 					<tr>
 						<td>
 							<input type="submit" value="Registrar">
 							<input type="reset">
 						</td>
-					</tr>	
+					</tr>
 				</table>
 			</form>
-			<table >
-				<caption>Lista de Aerolineas</caption>
+			<table style="border: 1px solid blue" id="lista_alianzas">
+				<caption>Lista de Alianzas Aereas</caption>
 				<tr>
-					<th>Ruc</th>
-					<th>Nombre</th>
-					<th>Eliminar</th>
+					<td style="border: 1px solid blue" >Código</td>
+					<td style="border: 1px solid blue">Nombre</td>
+					<td style="border: 1px solid blue" >Descuento(%)</td>
+					<td style="border: 1px solid blue">Descripcion</td>
+					<td style="border: 1px solid blue">Eliminar</td>
 				</tr>
 <?php 
 	include("scripts/conexion.php");
-	$consulta = "select * from aerolinea";
+	$consulta = "select * from descuento_promocion";
+	//Ejecutando consultas
 	$resultado = sqlsrv_query($conexion,$consulta) or 
 				die('No se pudo ejecutar la consulta');
 	$tabla = "";
 	while($linea=sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)){
 				$tabla .="<tr>";
-				$tabla .="<td>".$linea['RUC']."</td>";
-				$tabla .="<td>".$linea['nombre']."</td>";
-				$tabla .="<td><a href='scripts/eliminar_aerolinea.php?ruc={$linea['RUC']}'>Eliminar</a></td>";
+				$tabla .="<td>".$linea['cod_promocion']."</td>";
+				$tabla .="<td>".$linea['nombre_promocion']."</td>";
+				$tabla .="<td>".$linea['porcentaje_descuento']."</td>";
+				$tabla .="<td>".$linea['descripcion']."</td>";
+				$tabla .="<td><a href='scripts/eliminar_promocion.php?cod_promocion={$linea['cod_promocion']}'>Eliminar</a></td>";
 				$tabla .="</tr>";
 		}
 ?>
 			<?php echo $tabla; ?>
 			</table>
-	</div>
+		</div>
 	</body>
 </html>
