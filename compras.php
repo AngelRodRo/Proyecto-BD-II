@@ -1,9 +1,9 @@
-
 <?php
 	include('scripts/conexion.php');
 	//$nro_vuelo = $_REQUEST['nro_vuelo'];
 	session_start();
-	$_SESSION['nro_vuelo'] = '001';
+	$codigo = $_GET['codigo'];
+	$_SESSION['nro_vuelo'] = $codigo;
 	$consulta = "select v.cod_vuelo, dv.nro_vuelo, dv.horario_partida, dv.horario_llegada, c.nombre_ciudad as ciudad_origen, c2.nombre_ciudad as ciudad_destino  from vuelo v inner join detalles_vuelo dv on v.cod_vuelo = dv.cod_vuelo 
 inner join ciudad c on c.cod_ciudad = v.cod_ciudad_origen inner join ciudad c2 on c2.cod_ciudad = v.cod_ciudad_destino where DV.nro_vuelo = '{$_SESSION['nro_vuelo']}'";
 	$resultado = sqlsrv_query($conexion,$consulta);

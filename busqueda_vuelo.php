@@ -1,5 +1,6 @@
 <?php 
 
+	include('scripts/validar.php');
 	include("scripts/conexion.php");
 	$ciudado = $_POST['ciudado'];
 	$ciudadd = $_POST['ciudadd'];
@@ -32,12 +33,14 @@
 		$items.="<p><span id='cod'><strong>Aeropuerto de destino:</strong></span> <span>".$linea['Aeropuerto de destino']."</span></p>";
 		$items.="</div>";
 		$items.="<div id='item2'>";
-		$items.="<p><span><a href='#''>Mas detalles</a></span><span class='price'>S/.".$linea['Monto']."</span></p>";
+		$items.="<p><span><a href='compras.php?codigo=".$linea['Numero de vuelo']."'".">Mas detalles</a></span><span class='price'>S/.".$linea['Monto']."</span></p>";
 		$items.="				</div>
 			</div>
 		</div>";
  
 	}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,6 +51,7 @@
 	   <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/starter-template.css" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
+     <link href="css/sticky-footer-navbar.css" rel="stylesheet">
     <style>
 	 
 					.search_item{
@@ -87,14 +91,18 @@
 			}
 
 			.buscador{
+				border-radius: 5px;
 				display: inline-block;
+				position: relative;
 			}
 
 			.resultados{
 				display: inline-block;
+				position: absolute;
 			}
 
-
+ 
+ 
     </style>
 </head>
 <body>
@@ -131,12 +139,28 @@
 		<img class="logo" src="img/logo.png" width="250" height="130" alt="">
 	</div>
 	<div class="separacion"></div>
+ 
 	<div class="buscador">
-		
+		<form action="busqueda_vuelo.php" method="POST">
+      <div class="datos">
+        <label for="">Ciudad de origen:</label><br>
+        <label for="">Ciudad de destino:</label><br>
+        <label for="">Fecha de partida :</label>
+      </div>
+      <div class="datos_vuelo">
+        <input id="tags1" type="text" name="ciudado">  <br>
+        <input id="tags2" type="text" name="ciudadd"><br>
+        <input type="date" name="fecha">
+      </div>
+      <input class="btn btn-lg btn-primary " type="submit" value="Buscar">
+     </form>
 	</div>
+ 
 	<div class="resultados">
 		<?php echo $items; ?>
 	</div>
-		
+	 
+ 
+ 
 </body>
 </html>

@@ -5,7 +5,7 @@
 
   $resultado = sqlsrv_query($conexion,$consulta);
 
-
+  include('scripts/validar.php');
 
 
  ?>
@@ -14,7 +14,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Reservas disponibles</title>
+	<title>Buscar vuelos</title>
  
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/starter-template.css" rel="stylesheet">
@@ -25,6 +25,9 @@
     <script src="js/jquery-1.9.1.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="js/jquery-validate.js"></script>
+  <style>
+
+  </style>
   <script>
       $(function() {
         
@@ -81,13 +84,8 @@
           </ul>
           
            <ul class="nav navbar-nav navbar-right">
-              <li><a href="">Iniciar sesion</a></li>
-              <li><a href="">Crear nuevo usuario</a></li>
-              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list"><b class="caret"></b></a>
-              <ul class="dropdown-menu">
-              </ul>
-              </li>
+              <li class="active" ><a href="scripts/salir.php">Cerrar sesión</a></li>
+           
             </ul>
             
         </div><!--/.nav-collapse -->

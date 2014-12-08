@@ -1,4 +1,4 @@
-tml lang="es">
+<html lang="es">
 		<head>
 		<title>Promociones</title>
 		<meta charset="utf-8"> 
@@ -86,7 +86,7 @@ tml lang="es">
 				</table>
 			</form>
 			<table style="border: 1px solid blue" id="lista_alianzas">
-				<caption>Lista de Alianzas Aereas</caption>
+				<caption>Lista de Promociones</caption>
 				<tr>
 					<td style="border: 1px solid blue" >Código</td>
 					<td style="border: 1px solid blue">Nombre</td>

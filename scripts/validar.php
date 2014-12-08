@@ -7,7 +7,7 @@
 
 	if (!$registrado) {
 		//usuario no valido
-		header('Location: ingreso.php');
+		header('Location: index.php');
 		exit();
 	}
 

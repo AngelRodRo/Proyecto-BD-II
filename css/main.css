@@ -69,19 +69,9 @@ table,th,tr,td
 	text-align: center;
 }
 
-footer
-{
-	background: black;
- 	color: white;
-	text-align: center;
-	padding: 15px;
-}
+ 
 
-footer>span
-{
-	margin:  0px 75px;
-}
-
+ 
 a{
 	font-style: none;
 }
