@@ -15,7 +15,7 @@
 		    // Movernos a la derecha
 		    $this->Cell(80);
 		    // Título
-		    $this->Cell(30,10,'Registro de pasajeros',0,1,'C');
+		    $this->Cell(30,10,'FACTURA',0,1,'C');
 
 
 		    // Salto de línea

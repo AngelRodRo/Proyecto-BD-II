@@ -59,12 +59,10 @@
 					<table>
 						<h1>RESERVA REALIZADA EXITOSAMENTE</h1>
 					<tr>
-						<strong>Monto Total a Pagar :</strong> <?php echo $monto;?>
+						<strong>Monto Total a Pagar :</strong> <?php  echo $monto;?>
 						<br>
 					</tr>	
 					<tr>
-						<a href="factura.php">Ver detalles de la compra</a>
-						<br>
 						<a href="principal.php">Regresar al inicio</a>
 					<tr>
 				</table>
