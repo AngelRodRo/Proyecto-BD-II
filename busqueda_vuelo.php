@@ -70,7 +70,7 @@
 		}
 	}
 	else
-		$items.="No hay registros que coincidan con los criterios ingresados";
+		$item.="<span class='respuesta'>No hay registros que coincidan con los criterios ingresados</span>";
 	
 
 	 $consulta = "SELECT * FROM ciudad_pais";
@@ -192,6 +192,9 @@ table,th,tr,td{
 	font-size: 	15px;
 }
 
+.respuesta{
+	font-size: 25px;
+}
      </style>
 </head>
 <body>

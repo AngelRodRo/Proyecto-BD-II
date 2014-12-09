@@ -18,6 +18,15 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/starter-template.css" rel="stylesheet">
 <link rel="stylesheet" href="css/main.css">
+<style type="text/css">
+
+	.cabecera{
+		margin-top: 30px;
+	}
+	.monto{
+		font-size: 55px;
+	}
+</style>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -34,7 +43,7 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index1.php">Inicio</a></li>
+            <li><a href="index.php">Inicio</a></li>
  
             <li><a href="ayuda.php">Ayuda</a></li>
           </ul>
@@ -60,7 +69,7 @@
 					<table>
 						<h1>COMPRA REALIZADA EXITOSAMENTE</h1>
 					<tr>
-						<strong>Monto Total a Pagar :</strong> <?php echo $monto;?>
+						<strong>Monto Total a Pagar : </strong> <span class="monto">S/. <?php echo $monto;?> </span> 
 						<br>
 					</tr>	
 					<tr>
