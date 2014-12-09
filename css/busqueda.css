@@ -1,0 +1,47 @@
+.search_item{
+border:1px solid black;
+border-radius: 10px;
+padding: 10px;
+font-family: arial;
+margin:  5px 20px;
+}
+
+.data{
+margin: 0 15px;
+}
+
+.data>span{
+
+}
+
+
+p{
+margin: 10px 5px;
+}
+
+#item1,#item2{
+display: inline-block;
+margin: 0px 15px;
+}
+
+
+.price{
+font-size: 45px;
+margin: 0 5px;
+}
+
+span{
+margin: 0 15px;
+}
+
+.buscador{
+border-radius: 5px;
+display: inline-block;
+position: relative;
+}
+
+.resultados{
+display: inline-block;
+position: absolute;
+}
+

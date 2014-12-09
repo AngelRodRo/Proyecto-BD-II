@@ -42,7 +42,7 @@
 		$items.="<p><span id='cod'><strong>Aeropuerto de destino:</strong></span> <span>".$linea['Aeropuerto de destino']."</span></p>";
 		$items.="</div>";
 		$items.="<div id='item2'>";
-		$items.="<p><span><a href='compras.php?codigo=".$linea['Numero de vuelo']."'".">Mas detalles</a></span><span class='price'>S/.".$linea['Monto']."</span></p>";
+		$items.="<p><span></span><a href='compras.php?codigo=".$linea['Numero de vuelo']."'".">Reservar</a><span><a href='compras.php?codigo=".$linea['Numero de vuelo']."'".">Comprar</a></span><span class='price'>S/.".$linea['Monto']."</span></p>";
 		$items.="				</div>
 			</div>
 		</div>";
@@ -56,63 +56,63 @@
 <head></strong>
 	<meta charset="UTF-8">
 	<title>Reservas disponibles</title>
- 
+  
 	   <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/starter-template.css" rel="stylesheet">
+
     <link rel="stylesheet" href="css/main.css">
      <link href="css/sticky-footer-navbar.css" rel="stylesheet">
-    <style>
-	 
-					.search_item{
-				border:1px solid black;
-				border-radius: 10px;
-				padding: 10px;
-				font-family: arial;
-				margin:  5px 20px;
-			}
 
-			.data{
-				margin: 0 15px;
-			}
+     <style type="text/css">
+     	.search_item{
+border:1px solid black;
+border-radius: 10px;
+padding: 10px;
+font-family: arial;
+margin:  5px 20px;
+}
 
-			.data>span{
-				 
-			}
+.data{
+margin: 0 15px;
+}
+
+.data>span{
+
+}
 
 
-			p{
-				margin: 10px 5px;
-			}
+p{
+margin: 10px 5px;
+}
 
-			#item1,#item2{
-				display: inline-block;
-				margin: 0px 15px;
-			}
- 
+#item1,#item2{
+display: inline-block;
+margin: 0px 15px;
+}
 
-			.price{
-				font-size: 45px;
-				margin: 0 5px;
-			}
 
-			span{
-				margin: 0 25px;
-			}
+.price{
+font-size: 45px;
+margin: 0 5px;
+}
 
-			.buscador{
-				border-radius: 5px;
-				display: inline-block;
-				position: relative;
-			}
+span{
+margin: 0 15px;
+}
 
-			.resultados{
-				display: inline-block;
-				position: absolute;
-			}
+.buscador{
+border-radius: 5px;
+display: inline-block;
+position: relative;
+}
 
- 
- 
-    </style>
+.resultados{
+display: inline-block;
+position: absolute;
+}
+
+
+     </style>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
