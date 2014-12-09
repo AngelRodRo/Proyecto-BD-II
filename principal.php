@@ -111,7 +111,7 @@
         <input id="tags2" type="text" name="ciudadd"><br>
         <input type="date" name="fecha">
       </div>
-      <input class="btn btn-lg btn-primary " type="submit" value="Buscar">
+      <input class="btn btn-lg btn-primary " type="submit" value="Buscar" name="submit">
      </form>
      </div>
      </div>
