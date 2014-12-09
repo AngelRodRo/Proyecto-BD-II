@@ -42,7 +42,7 @@
 		$items.="<p><span id='cod'><strong>Aeropuerto de destino:</strong></span> <span>".$linea['Aeropuerto de destino']."</span></p>";
 		$items.="</div>";
 		$items.="<div id='item2'>";
-		$items.="<p><span><a href='compras.php?codigo=".$linea['Numero de vuelo']."'".">Mas detalles</a></span><span class='price'>S/.".$linea['Monto']."</span></p>";
+		$items.="<p><span><a href='compras.php?codigo=".$linea['Numero de vuelo']."'".">Mas detalles</a></span><span class='price'>S/.".$linea['monto']."</span></p>";
 		$items.="				</div>
 			</div>
 		</div>";

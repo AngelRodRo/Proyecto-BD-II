@@ -4,8 +4,7 @@
 	//$nro_vuelo = $_REQUEST['nro_vuelo'];
 	session_start();
 	$_SESSION['nro_vuelo'] = '001';
-	$consulta = "select v.cod_vuelo, dv.nro_vuelo, dv.horario_partida, dv.horario_llegada, c.nombre_ciudad as ciudad_origen, c2.nombre_ciudad as ciudad_destino  from vuelo v inner join detalles_vuelo dv on v.cod_vuelo = dv.cod_vuelo 
-inner join ciudad c on c.cod_ciudad = v.cod_ciudad_origen inner join ciudad c2 on c2.cod_ciudad = v.cod_ciudad_destino where DV.nro_vuelo = '{$_SESSION['nro_vuelo']}'";
+	$consulta = "select * from  vista_vuelos where nro_vuelo = '{$_SESSION['nro_vuelo']}'";
 	$resultado = sqlsrv_query($conexion,$consulta);
 	while ($linea = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) {
 		$cod_vuelo = $linea['cod_vuelo'];
@@ -14,7 +13,6 @@ inner join ciudad c on c.cod_ciudad = v.cod_ciudad_origen inner join ciudad c2 o
 		$horario_llegada = $linea['horario_llegada'];
 		$ciudad_origen = $linea['ciudad_origen'];
 		$ciudad_destino = $linea['ciudad_destino'];
-
 	}
 ?>
 <!DOCTYPE html>
@@ -116,12 +114,7 @@ inner join ciudad c on c.cod_ciudad = v.cod_ciudad_origen inner join ciudad c2 o
 					</tr>
 					<tr>
 						<td>
-							<label for="nro_pasajes">Número de Pasajeros : </label>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<input type="button" value="Regresar">
+							<a href=javascript:history.back(1)>Regresar</a>
 							<input type="submit" value="Siguiente">
 							<input type="reset">
 						</td>

@@ -10,7 +10,7 @@
 
 	$consulta = "INSERT INTO usuarios(nombres,app,apm,usuario,clave) values ('$nombres','$app','$apm','$usuario','$clave')";
 
-
+	echo $consulta;
 	if ($nombres) {	
 		sqlsrv_query($conexion,$consulta);
 	}
