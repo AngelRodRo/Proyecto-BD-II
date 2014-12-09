@@ -1,13 +1,12 @@
 <?php
 	include('scripts/conexion.php');
 	session_start();
-	$query = "select precio_pasaje,cod_reserva,(fecha_reserva + DAY(2)) as fecha_limite from reserva r inner join pasaje p on r.cod_pasaje = p.cod_pasaje where  r.cod_reserva = '{$_SESSION['cod_reserva']}'";
+
+	$query = "select precio_pasaje from reserva r inner join pasaje p on r.cod_pasaje = p.cod_pasaje where  r.cod_pasaje = '{$_SESSION['pasaje']}'";
 	$resultado = sqlsrv_query($conexion,$query);
 	while ($linea = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) 
 	{
 		$monto = $linea['precio_pasaje'];
-		$reserva = $linea['cod_reserva'];
-		$fecha_limite = $linea['fecha_limite'];
 	}
 ?>
 <!DOCTYPE html>
@@ -55,20 +54,19 @@
 	<div class="separacion"></div>
 	<div class="cuerpo">
 		<h1>Resultado de Reservas</h1>
+				
+				<form action='scripts/registrar_pasajero.php' method='GET' >
 					<table>
 						<h1>RESERVA REALIZADA EXITOSAMENTE</h1>
 					<tr>
-						<strong>Su codigo de reserva es :</strong> <?php echo $reserva;?>
-						<br>
 						<strong>Monto Total a Pagar :</strong> <?php  echo $monto;?>
-						<br>
-						<strong>Fecha limite para realizar la compra :</strong> <?php  echo $fecha_limite;?>
 						<br>
 					</tr>	
 					<tr>
 						<a href="principal.php">Regresar al inicio</a>
 					<tr>
 				</table>
+			</form>
 				</div>
 			<footer>Derechos reservados</footer>
 	</body>

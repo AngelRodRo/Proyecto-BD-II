@@ -1,10 +1,11 @@
 
 <?php
 	include('scripts/conexion.php');
-	//$nro_vuelo = $_REQUEST['nro_vuelo'];
+	$nro_vuelo = $_REQUEST['codigo'];
 	session_start();
-	$_SESSION['nro_vuelo'] = '001';
-	$consulta = "select * from  vista_vuelos where nro_vuelo = '{$_SESSION['nro_vuelo']}'";
+	$_SESSION['nro_vuelo'] = $nro_vuelo;
+	$consulta = "select v.cod_vuelo, dv.nro_vuelo, dv.horario_partida, dv.horario_llegada, c.nombre_ciudad as ciudad_origen, c2.nombre_ciudad as ciudad_destino  from vuelo v inner join detalles_vuelo dv on v.cod_vuelo = dv.cod_vuelo 
+inner join ciudad c on c.cod_ciudad = v.cod_ciudad_origen inner join ciudad c2 on c2.cod_ciudad = v.cod_ciudad_destino where DV.nro_vuelo = '{$_SESSION['nro_vuelo']}'";
 	$resultado = sqlsrv_query($conexion,$consulta);
 	while ($linea = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) {
 		$cod_vuelo = $linea['cod_vuelo'];
@@ -13,6 +14,7 @@
 		$horario_llegada = $linea['horario_llegada'];
 		$ciudad_origen = $linea['ciudad_origen'];
 		$ciudad_destino = $linea['ciudad_destino'];
+
 	}
 ?>
 <!DOCTYPE html>
@@ -23,6 +25,12 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/starter-template.css" rel="stylesheet">
 <link rel="stylesheet" href="css/main.css">
+<style type="text/css">
+	th,td,tr,table{
+		border: none;
+	}
+
+</style>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -114,7 +122,12 @@
 					</tr>
 					<tr>
 						<td>
-							<a href=javascript:history.back(1)>Regresar</a>
+							<label for="nro_pasajes">Número de Pasajeros : </label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="button" value="Regresar">
 							<input type="submit" value="Siguiente">
 							<input type="reset">
 						</td>

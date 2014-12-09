@@ -79,7 +79,7 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="index.php">Inicio</a></li>
-            <li><a href="mantenimiento.php">Mantenimiento</a></li>
+ 
             <li><a href="ayuda.php">Ayuda</a></li>
           </ul>
           
@@ -111,7 +111,11 @@
         <input id="tags2" type="text" name="ciudadd"><br>
         <input type="date" name="fecha">
       </div>
+<<<<<<< HEAD
       <input class="btn btn-lg btn-primary " type="submit" value="Buscar" name="submit">
+=======
+      <input class="btn btn-lg btn-primary " name="submit" type="submit" value="Buscar">
+>>>>>>> origin/master
      </form>
      </div>
      </div>

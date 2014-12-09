@@ -22,9 +22,14 @@
 	$_SESSION['pasaje'] = $cod_pasaje;
 	$consulta = "EXEC insertar_pasajero '{$identificacion}','{$tipo_identificacion}','{$nombre}','{$apellido_paterno}','{$apellido_materno}','{$fecha_nacimiento}','{$email}','{$sexo}','{$pais}'";
 	$resultado = sqlsrv_query($conexion,$consulta);
+	/*if($resultado === false)
+	{
+		die( print_r( sqlsrv_errors(), true) );
+	}*/
 	$consulta2 = "update reserva set cod_pasajero = '{$identificacion}',cod_pasaje = '{$cod_pasaje}' where cod_reserva = '{$_SESSION['cod_reserva']}'";
 	//echo $consulta2;
 	$resultado2 = sqlsrv_query($conexion,$consulta2);/* or
 				die('No se pudo ejecutar la consulta de la compra'.print_r( sqlsrv_errors(), true));*/
+
 	header("Location: ../resultado_reserva.php");
 ?>
