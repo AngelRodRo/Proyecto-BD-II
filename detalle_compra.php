@@ -62,7 +62,7 @@ where nro_vuelo = '{$_SESSION['nro_vuelo']}' and dc.cod_compra is  NULL";
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index1.php">Inicio</a></li>
+            <li><a href="index.php">Inicio</a></li>
  
             <li><a href="ayuda.php">Ayuda</a></li>
           </ul>
@@ -84,19 +84,19 @@ where nro_vuelo = '{$_SESSION['nro_vuelo']}' and dc.cod_compra is  NULL";
 	<div class="cuerpo">
 		<h1>Nuevas Compras</h1>
 				<form action='scripts/registrar_pasajero.php' method='GET' >
-					<table >
+					<table>
 					<script type="text/javascript">
 					for (var i = 1 ; i <= nro_pasajes; i++) {
 							document.write('<tr><td>');
-							document.write('<tr><strong>Datos del Pasajero '+i+'</strong></tr>');
+							document.write('<td>Datos del Pasajero '+i+'</td>');
 							document.write('</tr>');
-							var query ="<tr><td><label for='identificacion'>Nro. de Identificación:</label></td><td><input type='text' name='identificacion"+i+"' id='identificacion'></td></tr><tr><td><label for='tipo_identificacion'>Tipo de Identificación:</label></td><td><select id='tipo_identificacion' name='tipo_identificacion"+i+"'> <option value='D.N.I'>Documento Nacional de Identidad</option> <option value='Carnet Estrangeria'>Carnet de Estrangeria</option> <option value='Cédula de Extrangeria'>Cédula de Extrangeria</option></select></td></tr><tr><td><label for='nombre'>Nombres: </label></td><td><input type='text' name='nombre"+i+"' id='nombre'></td></tr><tr><td><label for='apellido_paterno'>Apellido Paterno: </label></td><td><input type='text' name='apellido_paterno"+i+"' id='apellido_paterno'></td></tr><tr><td><label for='apellido_materno'>Apellido Materno: </label></td><td><input type='text' name='apellido_materno"+i+"' id='apellido_materno'></td></tr><tr><td><label for='fecha_nacimiento'>Fecha de Nacimiento: </label></td><td><input type='date' name='fecha_nacimiento"+i+"' id='fecha_nacimiento'></td></tr><tr><td><label for='email'>Email: </label></td><td><input type='text' name='email"+i+"' id='email'></td></tr><tr><td><label>Seleccione el sexo:</label></td><td><input type='radio' name='sexo"+i+"' id='varon' value='M'><label for='varon'>Varón</label><br/> <input type='radio' name='sexo"+i+"' id='mujer' value='F'><label for='mujer'>Mujer</label></td></tr><tr><td><label for='pais'>Pais: </label></td><td><select id='pais' name='pais"+i+"'><?php echo $opciones ?></select></td></tr><tr><td><label for='pasajes'>Nro de asiento: </label></td><td><select id='pasajes' name='pasajes"+i+"'><?php echo $pasajes ?></select></td></tr>";
+							var query ="<tr><td><label for='identificacion'>Nro. de Identificación:</label></td><td><input type='text' required name='identificacion"+i+"' id='identificacion'></td></tr><tr><td><label for='tipo_identificacion'>Tipo de Identificación:</label></td><td><select id='tipo_identificacion' required name='tipo_identificacion"+i+"'> <option value='D.N.I'>Documento Nacional de Identidad</option> <option value='Carnet Estrangeria'>Carnet de Estrangeria</option> <option value='Cédula de Extrangeria'>Cédula de Extrangeria</option></select></td></tr><tr><td><label for='nombre'>Nombres: </label></td><td><input required type='text' name='nombre"+i+"' id='nombre'></td></tr><tr><td><label for='apellido_paterno'>Apellido Paterno: </label></td><td><input required type='text' name='apellido_paterno"+i+"' id='apellido_paterno'></td></tr><tr><td><label for='apellido_materno'>Apellido Materno: </label></td><td><input required type='text' name='apellido_materno"+i+"' id='apellido_materno'></td></tr><tr><td><label for='fecha_nacimiento'>Fecha de Nacimiento: </label></td><td><input required type='date' name='fecha_nacimiento"+i+"' id='fecha_nacimiento'></td></tr><tr><td><label for='email'>Email: </label></td><td><input type='text' name='email"+i+"' id='email'></td></tr><tr><td><label>Seleccione el sexo:</label></td><td><input type='radio' required name='sexo"+i+"' id='varon' value='M'><label for='varon'>Varón</label><br/> <input type='radio' name='sexo"+i+"' id='mujer' value='F'><label for='mujer'>Mujer</label></td></tr><tr><td><label for='pais'>Pais: </label></td><td><select id='pais' name='pais"+i+"'><?php echo $opciones ?></select></td></tr><tr><td><label for='pasajes'>Nro de asiento: </label></td><td><select id='pasajes' required name='pasajes"+i+"'><?php echo $pasajes ?></select></td></tr>";
 							document.write(query);
 						};
 					</script>
-					<tr >
-						<td class="botones">
-							<a href=javascript:history.back(1)><button class="btn btn-primary">Regresar</button></a>
+					<tr>
+						<td>
+							<a href=javascript:history.back(1)><button class="btn btn-primary">Regresar	</button></a>
 							<input class="btn btn-primary" type="submit" value="Finalizar">
 							<input class="btn btn-primary" type="reset">
 						</td>

@@ -1,11 +1,11 @@
 <?php
+	include('scripts/validar.php');
 	include('scripts/conexion.php');
 	//$nro_vuelo = $_REQUEST['nro_vuelo'];
-	session_start();
+	
 	$codigo = $_GET['codigo'];
 	$_SESSION['nro_vuelo'] = $codigo;
-	$consulta = "select v.cod_vuelo, dv.nro_vuelo, dv.horario_partida, dv.horario_llegada, c.nombre_ciudad as ciudad_origen, c2.nombre_ciudad as ciudad_destino  from vuelo v inner join detalles_vuelo dv on v.cod_vuelo = dv.cod_vuelo 
-inner join ciudad c on c.cod_ciudad = v.cod_ciudad_origen inner join ciudad c2 on c2.cod_ciudad = v.cod_ciudad_destino where DV.nro_vuelo = '{$_SESSION['nro_vuelo']}'";
+	$consulta = "select * from vista_vuelos where nro_vuelo = '{$_SESSION['nro_vuelo']}'";
 	$resultado = sqlsrv_query($conexion,$consulta);
 	while ($linea = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) {
 		$cod_vuelo = $linea['cod_vuelo'];
@@ -33,8 +33,24 @@ $resultado = sqlsrv_query($conexion,$consulta);
 <link href="css/starter-template.css" rel="stylesheet">
 <link rel="stylesheet" href="css/main.css">
 <style>
-	td,th,tr,table{
+ 
+
+		td,th,tr,table{
+		text-align: left;
 		border: none;
+	}
+
+	table{
+		margin: 10px;
+	}
+
+	.botones{
+		padding: 10px;
+		margin: 10px;
+	}
+
+	td{
+		padding: 5px;
 	}
 </style>
 </head>
@@ -48,7 +64,7 @@ $resultado = sqlsrv_query($conexion,$consulta);
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><img src="img/logo.png" width="70" height="30" alt=""></a>
+          <a class="navbar-brand" href="#"><img src="img/logo.png" width="50" height="30" alt=""></a>
           <a class="navbar-brand" href="#">Agencia de viajes</a>
         </div>
         <div class="collapse navbar-collapse">
@@ -58,13 +74,10 @@ $resultado = sqlsrv_query($conexion,$consulta);
             <li><a href="ayuda.php">Ayuda</a></li>
           </ul>
            <ul class="nav navbar-nav navbar-right">
-              <li><a href="">Iniciar sesion</a></li>
-              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list"><b class="caret"></b></a>
-              <ul class="dropdown-menu">
-              </ul>
-              </li>
+              <li class="active" ><a href="scripts/salir.php">Cerrar sesión</a></li>
+           
             </ul>
+            
         </div><!--/.nav-collapse -->
       </div>
     </div>
@@ -79,7 +92,7 @@ $resultado = sqlsrv_query($conexion,$consulta);
 				<table width=800px>
 					<tr>
 						<td>
-							<strong>Código del Vuelo</strong> 	
+							<strong>Código del Vuelo : </strong> 	
 						</td>	
 						<td>
 							<?php echo $cod_vuelo ?>
@@ -87,7 +100,7 @@ $resultado = sqlsrv_query($conexion,$consulta);
 					</tr>
 					<tr>
 						<td>
-							<strong>Número del vuelo</strong> 
+							<strong>Número del vuelo : </strong> 
 
 						</td>
 						<td>
@@ -96,7 +109,7 @@ $resultado = sqlsrv_query($conexion,$consulta);
 					</tr>
 					<tr>
 						<td>
-							<strong>Horario de Partida</strong>
+							<strong>Horario de Partida : </strong>
 						</td>
 						<td>
 							 <?php echo $horario_partida?>
@@ -104,7 +117,7 @@ $resultado = sqlsrv_query($conexion,$consulta);
 					</tr>
 					<tr>
 						<td>
-							<strong>Horario de Llegada</strong> 
+							<strong>Horario de Llegada : </strong> 
 						</td>
 						<td>
 							<?php echo $horario_llegada?>
@@ -112,7 +125,7 @@ $resultado = sqlsrv_query($conexion,$consulta);
 					</tr>
 					<tr>
 						<td>
-							<strong>Ciudad de Origen</strong>
+							<strong>Ciudad de Origen : </strong>
 						</td>
 						<td>
 							 <?php echo $ciudad_origen?>
@@ -120,7 +133,7 @@ $resultado = sqlsrv_query($conexion,$consulta);
 					</tr>
 					<tr>
 						<td>
-							<strong>Ciudad de Destino</strong> 
+							<strong>Ciudad de Destino : </strong> 
 						</td>
 						<td>
 							<?php echo $ciudad_destino; ?>
@@ -133,7 +146,7 @@ $resultado = sqlsrv_query($conexion,$consulta);
 						<td>
 							<script type="text/javascript">
 								var x = 0;
-								document.write("<select id='nro_pasajes' name='nro_pasajes'>");
+								document.write("<select  id='nro_pasajes' name='nro_pasajes' required>");
 								for (x = 1 ; x <= tope; x++) {
 									document.write("<option>"+x+"</option>");
 								};
@@ -144,9 +157,9 @@ $resultado = sqlsrv_query($conexion,$consulta);
 					</tr>
 					<tr>
 						<td>
-							<input type="button" value="Regresar">
-							<input type="submit" value="Siguiente">
-							<input type="reset">
+							<a href=javascript:history.back(1)><button class="btn btn-primary">Regresar	</button></a>
+							<input class="btn btn-primary" type="submit" value="Siguiente">
+							<input class="btn btn-primary" type="reset">
 						</td>
 					</tr>	
 				</table>

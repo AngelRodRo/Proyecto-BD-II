@@ -1,6 +1,4 @@
 <?php
-	
-	
 	include('scripts/conexion.php');
 	session_start();
 	$consulta="select * from pais";
@@ -9,8 +7,9 @@
 	while ($linea = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) {
 		$opciones .= "<option value='{$linea['cod_pais']}'>{$linea['nombre_pais']}</option> ";
 	}
-	$consulta = "select * from detalle_compra dc right join pasaje p on p.cod_pasaje = dc.cod_pasaje 
-where nro_vuelo = '{$_SESSION['nro_vuelo']}' and dc.cod_compra is  NULL";
+	$consulta = "select p.cod_pasaje, p.nro_asiento from detalle_compra dc right join pasaje p on p.cod_pasaje = dc.cod_pasaje
+full join reserva r on r.cod_pasaje = p.cod_pasaje 
+where (nro_vuelo = '{$_SESSION['nro_vuelo']}') and (dc.cod_compra is NULL) and (r.cod_reserva is null)";
 	echo $consulta;
 	$resultado = sqlsrv_query($conexion,$consulta);
 	$pasajes ="";
@@ -26,6 +25,36 @@ where nro_vuelo = '{$_SESSION['nro_vuelo']}' and dc.cod_compra is  NULL";
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/starter-template.css" rel="stylesheet">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/sticky-footer-navbar.css">
+<style type="text/css">
+	.cabecera{
+		 margin-top: 10px; 
+	}
+	    .footer{
+	
+    background: #000000;
+  }
+
+
+		td,th,tr,table{
+		text-align: left;
+		border: none;
+	}
+
+	table{
+		margin: 10px;
+	}
+
+	.botones{
+		padding: 10px;
+		margin: 10px;
+	}
+
+	td{
+		padding: 5px;
+	}
+
+</style>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -42,7 +71,7 @@ where nro_vuelo = '{$_SESSION['nro_vuelo']}' and dc.cod_compra is  NULL";
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index1.php">Inicio</a></li>
+            <li><a href="index.php">Inicio</a></li>
  
             <li><a href="ayuda.php">Ayuda</a></li>
           </ul>
@@ -68,14 +97,14 @@ where nro_vuelo = '{$_SESSION['nro_vuelo']}' and dc.cod_compra is  NULL";
 	<tr><td><label for='identificacion'>Nro. de Identificación:</label></td><td><input type='text' name='identificacion' id='identificacion'></td></tr><tr><td><label for='tipo_identificacion'>Tipo de Identificación:</label></td><td><select id='tipo_identificacion' name='tipo_identificacion'> <option value='D.N.I'>Documento Nacional de Identidad</option> <option value='Carnet Estrangeria'>Carnet de Estrangeria</option> <option value='Cédula de Extrangeria'>Cédula de Extrangeria</option></select></td></tr><tr><td><label for='nombre'>Nombres: </label></td><td><input type='text' name='nombre' id='nombre'></td></tr><tr><td><label for='apellido_paterno'>Apellido Paterno: </label></td><td><input type='text' name='apellido_paterno' id='apellido_paterno'></td></tr><tr><td><label for='apellido_materno'>Apellido Materno: </label></td><td><input type='text' name='apellido_materno' id='apellido_materno'></td></tr><tr><td><label for='fecha_nacimiento'>Fecha de Nacimiento: </label></td><td><input type='date' name='fecha_nacimiento' id='fecha_nacimiento'></td></tr><tr><td><label for='email'>Email: </label></td><td><input type='text' name='email' id='email'></td></tr><tr><td><label>Seleccione el sexo:</label></td><td><input type='radio' name='sexo' id='varon' value='M'><label for='varon'>Varón</label><br/> <input type='radio' name='sexo' id='mujer' value='F'><label for='mujer'>Mujer</label></td></tr><tr><td><label for='pais'>Pais: </label></td><td><select id='pais' name='pais'><?php echo $opciones ?></select></td></tr><tr><td><label for='pasajes'>Nro de asiento: </label></td><td><select id='pasajes' name='pasajes'><?php echo $pasajes ?></select></td></tr>
 					<tr>
 						<td>
-							<a href=javascript:history.back(1)>Regresar</a>
-							<input type="submit" value="Finalizar">
-							<input type="reset">
+							<a href=javascript:history.back(1)><button class="btn btn-primary">Regresar	</button></a>
+							<input class="btn btn-primary" type="submit" value="Finalizar">
+							<input class="btn btn-primary"  type="reset">
 						</td>
 					</tr>	
 				</table>
 			</form>
 				</div>
-			<footer>Derechos reservados</footer>
+			<footer class="footer">Derechos reservados</footer>
 	</body>
 </html>

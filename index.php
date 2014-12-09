@@ -54,6 +54,32 @@
           background-position:  20% 30%;
         }
     </style>
+    <script type="text/javascript">
+      window.onload = function () {
+        document.formularioContacto.nombre.focus();
+        document.formularioContacto.addEventListener('submit', validarFormulario);
+      }
+
+      function validarFormulario(evObject) {
+
+        evObject.preventDefault();
+        var todoCorrecto = true;
+        var formulario = document.formularioUsuario;
+        for (var i=0; i<formulario.length; i++) 
+        {
+          if(formulario[i].type =='text') {
+            if (formulario[i].value == null || formulario[i].value.length == 0 || /^\s*$/.test(formulario[i].value))
+            {
+                alert (formulario[i].name+ ' no puede estar vacío o contener sólo espacios en blanco');
+                todoCorrecto=false;
+            }
+          }
+        }
+        if (todoCorrecto ==true) {formulario.submit();}
+        }
+
+    </script>
+ 
   </head>
 
   <body>
@@ -78,10 +104,10 @@
             
           </ul>
           <ul class="nav navbar-nav navbar-right">
-          <form action="scripts/login.php" method="POST" >
-              <li class="login"> <span>Usuario : </span><input name="usuario" type="text"> </li>
-              <li class="login"> <span>Contraseña : </span><input name="password" type="password"> </li>
-              <li class="login"><input class="btn btn-primary " type="submit" value="Iniciar sesion"></li>
+          <form name="formularioUsuario" action="scripts/login.php" method="POST" >
+              <li class="login"> <span>Usuario : </span><input  name="usuario" required type="text"> </li>
+              <li class="login"> <span>Contraseña : </span><input name="password" required type="password"> </li>
+              <li class="login"><input class="btn btn-primary " type="submit" required value="Iniciar sesion"></li>
           </form>
                
             </ul>

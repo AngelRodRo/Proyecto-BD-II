@@ -1,14 +1,21 @@
 <?php 
 
   include('scripts/conexion.php');
-
-  $consulta = "SELECT * FROM ciudad_pais";
-
-  $resultado = sqlsrv_query($conexion,$consulta);
-
   include('scripts/validar.php');
+  $consulta = "SELECT * FROM ciudad_pais";
+  $resultado = sqlsrv_query($conexion,$consulta);
+  $valores = "";
+  while ($linea = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) 
+                  $valores.="'".$linea['Nombre de Ciudad']."',";
 
-
+  $nick=$_SESSION['usuario'];
+  if ($nick == "admin") {
+  echo '
+        <script type="text/javascript"> 
+          var valor = true;
+        </script>
+        ';
+  }
  ?>
 
 <!DOCTYPE html>
@@ -32,33 +39,18 @@
   <script>
       $(function() {
         
-        var availableTags = [
-          <?php 
-            while ($linea1 = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) 
-                  echo "'".$linea1['Nombre de Ciudad']."',";
-          ?>
-        ];
+        var availableTags = [ <?php echo $valores; ?>   ];
         $( "#tags1" ).autocomplete({
           source: availableTags
         });
       });
 
-
-  </script>
-  <script>
       $(function() {
-        
-        var availableTags = [
-          <?php 
-            while ($linea2 = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) 
-                  echo "'".$linea2['Nombre de Ciudad']."',";
-          ?>
-        ];
+        var availableTags1 = [ <?php echo $valores; ?>  ];
         $( "#tags2" ).autocomplete({
-          source: availableTags
+          source: availableTags1
         });
       });
-
 
   </script>
  
@@ -80,7 +72,12 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="index.php">Inicio</a></li>
- 
+            <script type="text/javascript">
+            if (valor) {
+              document.write("<li><a href='mantenimiento.php'>Mantenimiento</a></li>");
+           };
+            </script>
+            <li><a href="comprar_reserva.php">Comprar Reserva</a></li>
             <li><a href="ayuda.php">Ayuda</a></li>
           </ul>
           
@@ -108,12 +105,14 @@
         <label for="">Fecha de partida :</label>
       </div>
       <div class="datos_vuelo">
-        <input id="tags1" type="text" name="ciudado">  <br>
-        <input id="tags2" type="text" name="ciudadd"><br>
-        <input type="date" name="fecha">
+        <input id="tags1" type="text" name="ciudado" required>  <br>
+        <input id="tags2" type="text" name="ciudadd" required ><br>
+        <input type="date" name="fecha" required>
       </div>
 
+
       <input class="btn btn-lg btn-primary " name="submit" type="submit" value="Buscar">
+
      </form>
      </div>
      </div>
@@ -124,7 +123,7 @@
       </div>
       <div id="destinos-2">
        <img src="img/ecuador.jpg" alt="">
-       <img src="img/brasil.jpg" alt="">
+       <img src="img/Japón.jpg" alt="">
        </div>
      </div>
 

@@ -33,7 +33,7 @@
 	 		$item.="<div class='search_item	'>	<table>	
 				<tr>
 						<td>
-								<span><strong>Aerolinea : </strong> ".$linea['Nombre de aerolinea']."</span>	
+								<span><strong>Aerolinea : </strong> ".ucwords($linea['Nombre de aerolinea'])."</span>	
 						</td>
 						<td>	
 								<span><strong>Fecha :</strong> ".$fecha_cf."</span>
@@ -44,19 +44,19 @@
 				</tr>
 				<tr>	
 						<td>	
-								<span><strong>	Codigo : </strong>".$linea['Codigo de vuelo']."</span>
+								<span><strong>	Codigo : </strong>".ucwords($linea['Codigo de vuelo'])."</span>
 						</td>
 						<td>	
-								<span><strong>Origen : </strong>".$linea['Ciudad de origen']."-".$linea['Pais origen']."	</span>
+								<span><strong>Origen : </strong>".ucwords($linea['Ciudad de origen'])."-".ucwords($linea['Pais origen'])."	</span>
 						</td>
 						<td>	
-								<span><strong>Destino : </strong>".$linea['Ciudad de destino']."-".$linea['Pais de Destino']."</span>
+								<span><strong>Destino : </strong>".ucwords($linea['Ciudad de destino'])."-".ucwords($linea['Pais de Destino'])."</span>
 						</td>
 				</tr>
 				<tr>	
-						<td><span><strong>Aeropuerto de origen : </strong>".$linea['Aeropuerto de origen']."</span></td>
-						<td><span><strong>Clase :</strong> ".$linea['Descripcion']."</span></td>
-						<td></td>
+						<td><span><strong>Aeropuerto de origen : </strong>".ucwords($linea['Aeropuerto de origen'])."</span></td>
+						<td><span><strong>Clase :</strong> ".ucwords($linea['Descripcion'])."</span></td>
+						<td><span><strong>Tipo de persona :</strong> ".ucwords($linea['Tipo de persona'])."</td>
 						<td rowspan='2'><span class='price'>S/. ".$linea['Monto']."</span></td>
 				</tr>
 				<tr>	
@@ -73,8 +73,11 @@
 		$item.="<span class='respuesta'>No hay registros que coincidan con los criterios ingresados</span>";
 	
 
-	 $consulta = "SELECT * FROM ciudad_pais";
+  $consulta = "SELECT * FROM ciudad_pais";
   $resultado = sqlsrv_query($conexion,$consulta);
+  $valores = "";
+  while ($linea = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) 
+                  $valores.="'".$linea['Nombre de Ciudad']."',";
 }
 ?>
 <!DOCTYPE html>
@@ -93,20 +96,21 @@
     <script src="js/jquery-1.9.1.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="js/jquery-validate.js"></script>
-  <script>
+    <script>
       $(function() {
         
-        var availableTags = [
-          <?php 
-            while ($linea1 = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) 
-                  echo "'".$linea1['Nombre de Ciudad']."',";
-          ?>
-        ];
+        var availableTags = [ <?php echo $valores; ?>   ];
         $( "#tags1" ).autocomplete({
           source: availableTags
         });
       });
 
+      $(function() {
+        var availableTags1 = [ <?php echo $valores; ?>  ];
+        $( "#tags2" ).autocomplete({
+          source: availableTags1
+        });
+      });
 
   </script>
      <style type="text/css">
@@ -236,9 +240,9 @@ table,th,tr,td{
         <label for="">Fecha de partida :</label>
       </div>
       <div class="datos_vuelo">
-        <input id="tags1" type="text" name="ciudado">  <br>
-        <input id="tags2" type="text" name="ciudadd"><br>
-        <input type="date" name="fecha">
+        <input id="tags1" type="text" name="ciudado" required>  <br>
+        <input id="tags2" type="text" name="ciudadd" required><br>
+        <input type="date" name="fecha" required>
       </div>
       <input class="btn btn-lg btn-primary " name="submit" type="submit" value="Buscar">
      </form>

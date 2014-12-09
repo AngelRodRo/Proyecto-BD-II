@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php   
+      include('scripts/validar.php');
+
+ ?><!DOCTYPE html>
 <html lang="es">
 		<head>
 		<title>MANTENIMIENTO</title>
@@ -6,6 +9,13 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/starter-template.css" rel="stylesheet">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/sticky-footer-navbar.css">
+<style type="text/css">
+    .footer{
+    background: #000000;
+  }
+</style>
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -22,17 +32,15 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index1.php">Inicio</a></li>
+            <li><a href="index.php">Inicio</a></li>
  
             <li><a href="ayuda.php">Ayuda</a></li>
           </ul>
            <ul class="nav navbar-nav navbar-right">
-              <li><a href="">Iniciar sesion</a></li>
-              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list"><b class="caret"></b></a>
-              <ul class="dropdown-menu">
-              </ul>
-              </li>
+              <ul class="nav navbar-nav navbar-right">
+              <li class="active" ><a href="scripts/salir.php">Cerrar sesión</a></li>
+           
+            </ul>
             </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -58,6 +66,6 @@
       </table>
 
     </div>	
-		<footer>Derechos reservados</footer>
+		<footer class="footer"><div class="container"><p class=" ">Derechos reservados - 2014</p></div></footer>
 	</body>
 </html>

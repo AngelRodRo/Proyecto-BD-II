@@ -4,8 +4,7 @@
 	$nro_vuelo = $_REQUEST['codigo'];
 	session_start();
 	$_SESSION['nro_vuelo'] = $nro_vuelo;
-	$consulta = "select v.cod_vuelo, dv.nro_vuelo, dv.horario_partida, dv.horario_llegada, c.nombre_ciudad as ciudad_origen, c2.nombre_ciudad as ciudad_destino  from vuelo v inner join detalles_vuelo dv on v.cod_vuelo = dv.cod_vuelo 
-inner join ciudad c on c.cod_ciudad = v.cod_ciudad_origen inner join ciudad c2 on c2.cod_ciudad = v.cod_ciudad_destino where DV.nro_vuelo = '{$_SESSION['nro_vuelo']}'";
+	$consulta = "select * from vista_vuelos where nro_vuelo = '{$_SESSION['nro_vuelo']}'";
 	$resultado = sqlsrv_query($conexion,$consulta);
 	while ($linea = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) {
 		$cod_vuelo = $linea['cod_vuelo'];
@@ -25,12 +24,30 @@ inner join ciudad c on c.cod_ciudad = v.cod_ciudad_origen inner join ciudad c2 o
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/starter-template.css" rel="stylesheet">
 <link rel="stylesheet" href="css/main.css">
-<style type="text/css">
-	th,td,tr,table{
+<link rel="stylesheet" type="text/css" href="css/sticky-footer-navbar.css">
+<style>
+     .footer{
+    background: #000000;
+  }
+
+		td,th,tr,table{
+		text-align: left;
 		border: none;
 	}
 
-</style>
+	table{
+		margin: 10px;
+	}
+
+	.botones{
+		padding: 10px;
+		margin: 10px;
+	}
+
+	td{
+		padding: 5px;
+	}
+</style> 
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -73,7 +90,7 @@ inner join ciudad c on c.cod_ciudad = v.cod_ciudad_origen inner join ciudad c2 o
 				<table width=800px>
 					<tr>
 						<td>
-							<strong>Código del Vuelo</strong> 	
+							<strong>Código del Vuelo : </strong> 	
 						</td>	
 						<td>
 							<?php echo $cod_vuelo ?>
@@ -81,7 +98,7 @@ inner join ciudad c on c.cod_ciudad = v.cod_ciudad_origen inner join ciudad c2 o
 					</tr>
 					<tr>
 						<td>
-							<strong>Número del vuelo</strong> 
+							<strong>Número del vuelo : </strong> 
 
 						</td>
 						<td>
@@ -90,7 +107,7 @@ inner join ciudad c on c.cod_ciudad = v.cod_ciudad_origen inner join ciudad c2 o
 					</tr>
 					<tr>
 						<td>
-							<strong>Horario de Partida</strong>
+							<strong>Horario de Partida : </strong>
 						</td>
 						<td>
 							 <?php echo $horario_partida?>
@@ -98,7 +115,7 @@ inner join ciudad c on c.cod_ciudad = v.cod_ciudad_origen inner join ciudad c2 o
 					</tr>
 					<tr>
 						<td>
-							<strong>Horario de Llegada</strong> 
+							<strong>Horario de Llegada : </strong> 
 						</td>
 						<td>
 							<?php echo $horario_llegada?>
@@ -106,7 +123,7 @@ inner join ciudad c on c.cod_ciudad = v.cod_ciudad_origen inner join ciudad c2 o
 					</tr>
 					<tr>
 						<td>
-							<strong>Ciudad de Origen</strong>
+							<strong>Ciudad de Origen : </strong>
 						</td>
 						<td>
 							 <?php echo $ciudad_origen?>
@@ -114,7 +131,7 @@ inner join ciudad c on c.cod_ciudad = v.cod_ciudad_origen inner join ciudad c2 o
 					</tr>
 					<tr>
 						<td>
-							<strong>Ciudad de Destino</strong> 
+							<strong>Ciudad de Destino : </strong> 
 						</td>
 						<td>
 							<?php echo $ciudad_destino; ?>
@@ -127,15 +144,15 @@ inner join ciudad c on c.cod_ciudad = v.cod_ciudad_origen inner join ciudad c2 o
 					</tr>
 					<tr>
 						<td>
-							<input type="button" value="Regresar">
-							<input type="submit" value="Siguiente">
-							<input type="reset">
+							<input class="btn btn-primary" type="button" value="Regresar">
+							<input class="btn btn-primary" type="submit" value="Siguiente">
+							 
 						</td>
 					</tr>	
 				</table>
 			</form>
 						</div>
-			<footer>Derechos reservados</footer>
+			<footer class="footer"><div class="container"><p class=" ">Derechos reservados - 2014</p></div></footer>
 	</body>
 </html>
 

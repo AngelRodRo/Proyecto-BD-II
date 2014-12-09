@@ -1,14 +1,22 @@
 	
 <?php
 	require('scripts/fpdf.php');
-
+	include("scripts/conexion.php");
 
 
 	class PDF extends FPDF
 	{
 		// Cabecera de página
 		function Header()
-		{
+		{ 
+			include("scripts/conexion.php");
+			$query = "select dc.cod_compra, dc.cod_pasaje, dc.cod_pasajero, pa.apellido_paterno, p.nro_asiento, p.precio_pasaje, p.nro_vuelo from detalle_compra dc inner join pasaje p 
+			on dc.cod_pasaje = p.cod_pasaje inner join pasajero pa on pa.cod_pasajero = dc.cod_pasajero where dc.cod_compra='{$_SESSION['cod_compra']}'";
+			$resultado = sqlsrv_query($conexion,$query);
+			$linea1=sqlsrv_fetch_array($resultado,SQLSRV_FETCH_NUMERIC);
+		    $query = "SELECT * FROM usuarios";
+		    $resultado = sqlsrv_query($conexion,$query);
+		    $lin
 		    // Logo
 		    $this->Image('img/logo.png',10,8,33);
 		    // Arial bold 15
@@ -16,9 +24,9 @@
 		    // Movernos a la derecha
 		    $this->Cell(80);
 		    // Título
-		    $linea=sqlsrv_fetch_array($data,SQLSRV_FETCH_NUMERIC)
+		    
 
-		    $this->Cell(30,10,'FACTURA' +$linea[0],0,1,'C');
+		    $this->Cell(30,10,'FACTURA #'.$linea[0],0,1,'C');
 
 
 		    // Salto de línea
@@ -84,7 +92,7 @@
 		     
 		    // Cabecera
 		     
-		    for($i=0;$i<count($header);$i++)
+		    for($i=1;$i<count($header);$i++)
 		        $this->Cell($w[$i],7,$header[$i],1,0,'C',true);
 		    $this->Ln();
 		    // Restauración de colores y fuentes
@@ -97,7 +105,7 @@
 
 		    while($linea=sqlsrv_fetch_array($data,SQLSRV_FETCH_NUMERIC))
 		    {
-		    	 for ($i=0; $i < count($header) ; $i++) { 
+		    	 for ($i=1; $i < count($header) ; $i++) { 
 			        $this->Cell($w[$i],6,$linea[$i],'LR',0,'C',$fill);
 			        		    	 
 			    }
@@ -120,7 +128,7 @@
 		}
 	}
 
-	include("scripts/conexion.php");
+	
 	session_start();
 	//ECHO $_SESSION['cod_compra'];
 	$query = "select dc.cod_compra, dc.cod_pasaje, dc.cod_pasajero, pa.apellido_paterno, p.nro_asiento, p.precio_pasaje, p.nro_vuelo from detalle_compra dc inner join pasaje p 

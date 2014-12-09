@@ -1,6 +1,7 @@
 <?php 
-    include('validar.php');
-?>
+    include('scripts/verificar.php');
+   ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,7 +12,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
-    <title>Crear un nuevo usuario</title>
+    <title>Inicio de sesión</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -28,8 +29,35 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+       input{
+        color:black;
+        border-radius:   5px;
+       }
+
+       span{
+        margin: 5px;
+
+       }
+
+       .login
+       {    
+            margin:10px;
+            color:  white;
+            display: inline-block;
+       }
+
+        body
+        {
+          background-image:   url('img/fondo.jpg');
+          background-repeat:  no-repeat;  
+          background-position:  20% 30%;
+        }
+    </style>
   </head>
+
   <body>
+
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -39,46 +67,39 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Sistema de kardex</a>
+          <a class="navbar-brand" href="#"><img src="img/logo.png" width="50" height="30" alt=""></a>
+          <a class="navbar-brand" href="#">Agencia de viajes</a>
+ 
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index1.php">Inicio</a></li>
-            <li><a href="mostrar.php">Mostrar kardex</a></li>
-            <li><a href="ayuda.php">Ayuda</a></li>
+            <li><a href="registro.php">Nuevo usuario</a></li>
+ 
+            
           </ul>
-           <ul class="nav navbar-nav navbar-right">
-              <li  ><a href="#"> <img src="img/user.png" width="25" height="25">  <?php echo "USUARIO : ".$_SESSION['usuario']; ?></a></li>
-              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list"><b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li  ><a href="newuser.php">Crear nuevo usuario</a></li>
-                <li class="active" ><a href="salir.php">Cerrar sesión</a></li>
-    
-              </ul>
-              </li>
+          <ul class="nav navbar-nav navbar-right">
+          <form action="scripts/login.php" method="POST" >
+              <li class="login"> <span>Usuario : </span><input name="usuario" type="text"> </li>
+              <li class="login"> <span>Contraseña : </span><input name="password" type="password"> </li>
+              <li class="login"><input class="btn btn-primary " type="submit" value="Iniciar sesion"></li>
+          </form>
+               
             </ul>
+
         </div><!--/.nav-collapse -->
       </div>
     </div>
-    <div class="jumbotron">    
-			<form class="form-signin" role="form" action="usuario.php" method="POST" >
-        <h2 class="form-signin-heading">Por favor ingrese los datos</h2>
-        <input type="text" class="form-control" placeholder="Nombres" name="nombres" required autofocus>
-        <input type="text" class="form-control" placeholder="Apellido paterno" name="app" required autofocus>
-        <input type="text" class="form-control" placeholder="Apellido materno" name="apm" required autofocus>
-        <input type="text" class="form-control" placeholder="Username" name="username" required autofocus>
-        <input type="password" class="form-control" placeholder="Password" name="clave" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Crear nuevo usuario</button>
-      </form>
-    </div>
+
+    
+
+    <!-- /container -->
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-  </body>
+
+      </body>
 </html>
-
-
 
