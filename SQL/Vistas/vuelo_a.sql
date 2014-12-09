@@ -1,4 +1,4 @@
-ALTER VIEW [dbo].[vuelos_a] 
+ALTER VIEW vuelos_a
 AS
 SELECT dv.nro_vuelo as 'Numero de vuelo', dv.cod_vuelo as 'Codigo de vuelo',ap.nombre_aereopuerto as 'Aeropuerto de origen',ao.nombre_aereopuerto as 'Aeropuerto de destino',
 c.nombre_ciudad as 'Ciudad de origen',p.nombre_pais as 'Pais origen', cd.nombre_ciudad as 'Ciudad de destino',pa.nombre_pais as 'Pais de Destino',horario_llegada as 'Horario de llegada',
