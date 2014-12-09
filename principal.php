@@ -112,11 +112,8 @@
         <input id="tags2" type="text" name="ciudadd"><br>
         <input type="date" name="fecha">
       </div>
-<<<<<<< HEAD
-      <input class="btn btn-lg btn-primary " type="submit" value="Buscar" name="submit">
-=======
+
       <input class="btn btn-lg btn-primary " name="submit" type="submit" value="Buscar">
->>>>>>> origin/master
      </form>
      </div>
      </div>

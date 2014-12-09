@@ -214,12 +214,8 @@ table,th,tr,td{
             <li><a href="ayuda.php">Ayuda</a></li>
           </ul>
            <ul class="nav navbar-nav navbar-right">
- 
-              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list"><b class="caret"></b></a>
-              <ul class="dropdown-menu">
-              </ul>
-              </li>
+              <li class="active" ><a href="scripts/salir.php">Cerrar sesión</a></li>
+           
             </ul>
         </div><!--/.nav-collapse -->
       </div>

@@ -98,12 +98,14 @@ label
 
 .datos >label
 {
-	margin-bottom: 20px;	
+	margin-top: 20px;
+ 
 }
 
 .datos_vuelo>input{
 margin-bottom: 10px;
-width: 300px;	
+width: 300px;
+margin-top: 4px;	
 }
 
 .datos{
