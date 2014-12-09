@@ -18,7 +18,7 @@
 		    // Título
 		    $linea=sqlsrv_fetch_array($data,SQLSRV_FETCH_NUMERIC)
 
-		     
+		    $this->Cell(30,10,'FACTURA' +$linea[0],0,1,'C');
 
 
 		    // Salto de línea
