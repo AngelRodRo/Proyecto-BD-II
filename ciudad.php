@@ -109,7 +109,7 @@
 						$tabla .="<td>".$linea['cod_ciudad']."</td>";
 						$tabla .="<td>".$linea['nombre_ciudad']."</td>";
 						$tabla .="<td>".$linea['cod_pais']."</td>";
-						$tabla .="<td><a href='scripts/eliminar_ciudad.php?cod_pais={$linea['cod_ciudad']}'>Eliminar</a></td>";
+						$tabla .="<td><a href='scripts/eliminar_ciudad.php?cod_ciudad={$linea['cod_ciudad']}'>Eliminar</a></td>";
 						$tabla .="</tr>";
 				}
 		?>

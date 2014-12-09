@@ -1,19 +1,7 @@
-<?php
-	include('scripts/conexion.php');
-	session_start();
-	$query = "select precio_pasaje,cod_reserva,(fecha_reserva + DAY(2)) as fecha_limite from reserva r inner join pasaje p on r.cod_pasaje = p.cod_pasaje where  r.cod_reserva = '{$_SESSION['cod_reserva']}'";
-	$resultado = sqlsrv_query($conexion,$query);
-	while ($linea = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) 
-	{
-		$monto = $linea['precio_pasaje'];
-		$reserva = $linea['cod_reserva'];
-		$fecha_limite = $linea['fecha_limite'];
-	}
-?>
 <!DOCTYPE html>
 <html lang="es">
 		<head>
-		<title>Reservas</title>
+		<title>MANTENIMIENTO</title>
 		<meta charset="utf-8"> 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/starter-template.css" rel="stylesheet">
@@ -54,22 +42,22 @@
    </div>
 	<div class="separacion"></div>
 	<div class="cuerpo">
-		<h1>Resultado de Reservas</h1>
-					<table>
-						<h1>RESERVA REALIZADA EXITOSAMENTE</h1>
-					<tr>
-						<strong>Su codigo de reserva es :</strong> <?php echo $reserva;?>
-						<br>
-						<strong>Monto Total a Pagar :</strong> <?php  echo $monto;?>
-						<br>
-						<strong>Fecha limite para realizar la compra :</strong> <?php  echo $fecha_limite;?>
-						<br>
-					</tr>	
-					<tr>
-						<a href="principal.php">Regresar al inicio</a>
-					<tr>
-				</table>
-				</div>
-			<footer>Derechos reservados</footer>
+		<h1>TABLAS DE MANTENIMIENTO</h1>
+		  <table>
+        <tr>
+            <ol>
+              <li><a href="alianza_aerea.php">Registro de Alianzas Aereas</a></li>
+              <li><a href="aerolineas.php">Registro de Nuevas Aerolineas</a></li>
+              <li><a href="pais.php">Registro de Paises</a></li>
+              <li><a href="ciudad.php">Registro de ciudades</a></li>
+              <li><a href="promocion.php">Registro de promociones</a></li>
+              <li><a href="tarifas.php">Registro de Tarifas</a></li>
+              <li><a href="tripulante.php">Registro de Tripulantes</a></li>
+            </ol>
+        </tr>
+      </table>
+
+    </div>	
+		<footer>Derechos reservados</footer>
 	</body>
 </html>

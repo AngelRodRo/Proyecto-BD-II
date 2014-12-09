@@ -78,8 +78,8 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index1.php">Inicio</a></li>
- 
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="mantenimiento.php">Mantenimiento</a></li>
             <li><a href="ayuda.php">Ayuda</a></li>
           </ul>
           

@@ -1,3 +1,7 @@
+<?php 
+    include('scripts/verificar.php');
+   ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
