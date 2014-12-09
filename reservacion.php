@@ -1,9 +1,9 @@
 
 <?php
 	include('scripts/conexion.php');
-	//$nro_vuelo = $_REQUEST['nro_vuelo'];
+	$nro_vuelo = $_REQUEST['codigo'];
 	session_start();
-	$_SESSION['nro_vuelo'] = '001';
+	$_SESSION['nro_vuelo'] = $nro_vuelo;
 	$consulta = "select v.cod_vuelo, dv.nro_vuelo, dv.horario_partida, dv.horario_llegada, c.nombre_ciudad as ciudad_origen, c2.nombre_ciudad as ciudad_destino  from vuelo v inner join detalles_vuelo dv on v.cod_vuelo = dv.cod_vuelo 
 inner join ciudad c on c.cod_ciudad = v.cod_ciudad_origen inner join ciudad c2 on c2.cod_ciudad = v.cod_ciudad_destino where DV.nro_vuelo = '{$_SESSION['nro_vuelo']}'";
 	$resultado = sqlsrv_query($conexion,$consulta);
@@ -25,6 +25,12 @@ inner join ciudad c on c.cod_ciudad = v.cod_ciudad_origen inner join ciudad c2 o
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/starter-template.css" rel="stylesheet">
 <link rel="stylesheet" href="css/main.css">
+<style type="text/css">
+	th,td,tr,table{
+		border: none;
+	}
+
+</style>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">

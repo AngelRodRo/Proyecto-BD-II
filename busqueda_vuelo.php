@@ -1,5 +1,7 @@
 <?php 
-
+	if (isset($_POST['submit'])) {
+		# code...
+	
 	include('scripts/validar.php');
 	include("scripts/conexion.php");
 	$ciudado = $_POST['ciudado'];
@@ -18,38 +20,61 @@
 
 	$items="";
  
- 
+ 		$item="";
 
-	while ($linea = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) {
-		$fecha = $linea['Horario de partida'];
-		$fecha_f=date_parse($fecha);
-		$fecha_cf = $fecha_f['day']."-".$fecha_f['month']."-".$fecha_f['year'];
+	if (sqlsrv_has_rows($resultado)) {
+		while ($linea = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) {
+			$fecha = $linea['Horario de partida'];
+			$fecha_f=date_parse($fecha);
+			$fecha_cf = $fecha_f['day']."-".$fecha_f['month']."-".$fecha_f['year'];
+			$descuento = $linea['Porcentaje de descuento']*100;
 
+	 		$item.="<div class='search_item	'>	<table>	
+				<tr>
+						<td>
+								<span><strong>Aerolinea : </strong> ".$linea['Nombre de aerolinea']."</span>	
+						</td>
+						<td>	
+								<span><strong>Fecha :</strong> ".$fecha_cf."</span>
+						</td>	
+						<td>	
+								<span class='descuento'>Con ".$descuento."% de descuento	</span>
+						</td>
+				</tr>
+				<tr>	
+						<td>	
+								<span><strong>	Codigo : </strong>".$linea['Codigo de vuelo']."</span>
+						</td>
+						<td>	
+								<span><strong>Origen : </strong>".$linea['Ciudad de origen']."-".$linea['Pais origen']."	</span>
+						</td>
+						<td>	
+								<span><strong>Destino : </strong>".$linea['Ciudad de destino']."-".$linea['Pais de Destino']."</span>
+						</td>
+				</tr>
+				<tr>	
+						<td><span><strong>Aeropuerto de origen : </strong>".$linea['Aeropuerto de origen']."</span></td>
+						<td><span><strong>Clase :</strong> ".$linea['Descripcion']."</span></td>
+						<td></td>
+						<td rowspan='2'><span class='price'>S/. ".$linea['Monto']."</span></td>
+				</tr>
+				<tr>	
+						<td><span><strong>Aeropuerto de destino : </strong>".$linea['Aeropuerto de destino']."</span></td>
+						<td class='reserva'><span><a href='reservacion.php?codigo=".$linea['Numero de vuelo']."'"."><button class='btn btn-primary'>Reservar</button></a></span></td>
+						<td class='compra'><span><a href='compras.php?codigo=".$linea['Numero de vuelo']."'"."><button class='btn btn-primary'>Comprar</button></a></span></td>
 
-		$items.="<div class='search_item'>";
-				$items.="<div class='data'>
- 				<p><span><strong>Aerolinea : </strong></span><span>".$linea['Nombre de aerolinea']."</span>
- 				<span><strong>Fecha : </strong></span><span>".$fecha_cf."</span></p>
- 			</div>";
-		$items.="<div class='data'>";
-		$items.="<div><p><span id='cod'><strong>Codigo  :</strong></span><span>".$linea['Codigo de vuelo']."</span>";
-		$items.="<span><strong>Origen  :</strong></span><span>".$linea['Ciudad de origen']."-".$linea['Pais origen']."</span>";
-		$items.="<span><strong>Destino : </strong></span><span>".$linea['Ciudad de destino']."-".$linea['Pais de Destino']."</span></p></div>";
-		$items.="</div>";
-		$items.="<div>";
-		$items.="<div id='item1'>";
-		$items.=" <p><span id='cod'><strong>Aeropuerto de origen &nbsp;:</strong></span> <span>".$linea['Aeropuerto de origen']."</span></p>";
-		$items.="<p><span id='cod'><strong>Aeropuerto de destino:</strong></span> <span>".$linea['Aeropuerto de destino']."</span></p>";
-		$items.="</div>";
-		$items.="<div id='item2'>";
-		$items.="<p><span></span><a href='compras.php?codigo=".$linea['Numero de vuelo']."'".">Reservar</a><span><a href='compras.php?codigo=".$linea['Numero de vuelo']."'".">Comprar</a></span><span class='price'>S/.".$linea['Monto']."</span></p>";
-		$items.="				</div>
-			</div>
-		</div>";
- 
+				</tr>
+			</table></div>";
+	 
+		}
 	}
+	else
+		$items.="No hay registros que coincidan con los criterios ingresados";
+	
 
-
+	 $consulta = "SELECT * FROM ciudad_pais";
+  $resultado = sqlsrv_query($conexion,$consulta);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,17 +84,42 @@
   
 	   <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/starter-template.css" rel="stylesheet">
-
+<link rel="stylesheet" href="css/jquery-ui.css">
     <link rel="stylesheet" href="css/main.css">
      <link href="css/sticky-footer-navbar.css" rel="stylesheet">
+        <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.ketchup.all.min.js"></script>
+    <script src="js/jquery-1.9.1.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/jquery-validate.js"></script>
+  <script>
+      $(function() {
+        
+        var availableTags = [
+          <?php 
+            while ($linea1 = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) 
+                  echo "'".$linea1['Nombre de Ciudad']."',";
+          ?>
+        ];
+        $( "#tags1" ).autocomplete({
+          source: availableTags
+        });
+      });
 
+
+  </script>
      <style type="text/css">
+     body{
+     	background: #FAFAFA;
+
+     }
      	.search_item{
-border:1px solid black;
+ 
 border-radius: 10px;
 padding: 10px;
-font-family: arial;
-margin:  5px 20px;
+ 
+margin:  15px 20px;
+background: #5AB3D1;
 }
 
 .data{
@@ -92,9 +142,16 @@ margin: 0px 15px;
 
 
 .price{
-font-size: 45px;
-margin: 0 5px;
+font-size: 35px;
+margin: 0px;
+text-align:  right;
+font-weight: 	bolder;
 }
+
+.data>p>span{
+	margin: 0 15px;
+}
+
 
 span{
 margin: 0 15px;
@@ -104,6 +161,7 @@ margin: 0 15px;
 border-radius: 5px;
 display: inline-block;
 position: relative;
+
 }
 
 .resultados{
@@ -111,6 +169,27 @@ display: inline-block;
 position: absolute;
 }
 
+table,th,tr,td{
+	text-align: left;	
+	border: 	none;
+	margin: 5px;
+}
+
+.compra{
+	margin: 15px 0px;
+	text-align: 	left;		
+
+}
+
+.reserva{
+	padding: 15px 0px;
+	margin: 15px 0px;
+	text-align: 	right;	
+}
+.descuento{
+	color:red;
+	font-size: 	15px;
+}
 
      </style>
 </head>
@@ -161,12 +240,13 @@ position: absolute;
         <input id="tags2" type="text" name="ciudadd"><br>
         <input type="date" name="fecha">
       </div>
-      <input class="btn btn-lg btn-primary " type="submit" value="Buscar">
+      <input class="btn btn-lg btn-primary " name="submit" type="submit" value="Buscar">
      </form>
 	</div>
- 
+ 		
 	<div class="resultados">
-		<?php echo $items; ?>
+		<h2>Resultados : </h2>
+		<?php echo $item; ?>
 	</div>
 	 
  

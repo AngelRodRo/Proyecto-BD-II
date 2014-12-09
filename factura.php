@@ -15,11 +15,15 @@
 		    // Movernos a la derecha
 		    $this->Cell(80);
 		    // Título
-		    $this->Cell(30,10,'FACTURA',0,1,'C');
+		    $linea=sqlsrv_fetch_array($data,SQLSRV_FETCH_NUMERIC)
+
+		    $this->Cell(30,10,'FACTURA' + $this->Cell($w[0],6,$linea[0],'LR');,0,1,'C');
 
 
 		    // Salto de línea
 		    $this->Ln(20);
+
+		    $this->Cell(30,10,'Nombre del cliente : ',0,1,'L');
 		}
 
 		// Tabla simple
@@ -52,7 +56,7 @@
 		    while($linea=sqlsrv_fetch_array($data,SQLSRV_FETCH_NUMERIC))
 		    {
 		    	 
-			        $this->Cell($w[0],6,$linea[0],'LR');
+
 			        $this->Cell($w[1],6,$linea[1],'LR');
 			        $this->Cell($w[2],6,$linea[2],'LR',0,'R');
 			        $this->Cell($w[3],6,$linea[3],'LR',0,'R');
@@ -123,7 +127,7 @@ on dc.cod_pasaje = p.cod_pasaje inner join pasajero pa on pa.cod_pasajero = dc.c
 	$resultado = sqlsrv_query($conexion,$query);
 	$pdf = new PDF();
 	// Títulos de las columnas
-	$header = array('Codigo de compra', 'Pasaje', 'Pasajero','Apellido', 'Nro. de Asiento','Precio','Nro. Vuelo');
+	$header = array('Pasaje', 'Pasajero','Apellido', 'Nro. de Asiento','Precio','Nro. Vuelo');
 	//El tamañao de las cabeceras
 	$w = array(30, 25, 30, 30,30,20,20);
 	$pdf->AliasNbPages();
