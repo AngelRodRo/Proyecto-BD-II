@@ -1,4 +1,5 @@
 <?php 
+
   include('scripts/conexion.php');
 
   $consulta = "SELECT * FROM ciudad_pais";
