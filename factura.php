@@ -3,6 +3,7 @@
 	require('scripts/fpdf.php');
 
 
+
 	class PDF extends FPDF
 	{
 		// Cabecera de página
@@ -17,7 +18,7 @@
 		    // Título
 		    $linea=sqlsrv_fetch_array($data,SQLSRV_FETCH_NUMERIC)
 
-		    $this->Cell(30,10,'FACTURA' + $this->Cell($w[0],6,$linea[0],'LR');,0,1,'C');
+		     
 
 
 		    // Salto de línea

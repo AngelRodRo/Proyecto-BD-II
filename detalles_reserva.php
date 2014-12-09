@@ -1,5 +1,6 @@
 <?php
 	
+	
 	include('scripts/conexion.php');
 	session_start();
 	$consulta="select * from pais";
